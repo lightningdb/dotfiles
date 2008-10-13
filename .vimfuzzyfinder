@@ -1,0 +1,51 @@
+VERSION	206
+MruFile	{'path': '/home/dave/.vimrc', 'time': 1223866208}
+MruFile	{'path': '/home/dave/1223866205_NERD_tree_', 'time': 1223866205}
+MruFile	{'path': '/home/dave/.gvimrc', 'time': 1223866163}
+MruFile	{'path': '/tmp/plugin/', 'time': 1223865598}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/config/routes.rb', 'time': 1223865471}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/app/models/role.rb', 'time': 1223865244}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/1223865233_NERD_tree_', 'time': 1223865235}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/[BufExplorer]', 'time': 1223865155}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/1223865145_NERD_tree_', 'time': 1223865147}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/1223865026_NERD_tree_', 'time': 1223865027}
+MruFile	{'path': '', 'time': 1223865018}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/', 'time': 1223865009}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/app/helpers/application_helper.rb', 'time': 1223864963}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/1223864876_NERD_tree_', 'time': 1223864877}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/1223864472_NERD_tree_', 'time': 1223864474}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/1223864437_NERD_tree_', 'time': 1223864439}
+MruFile	{'path': '/home/dave/Code/mobile_app.2.2/app/views/shared/_header.rhtml', 'time': 1223860287}
+MruFile	{'path': '/home/dave/1223860284_NERD_tree_', 'time': 1223860284}
+MruFile	{'path': '/home/dave/1223860279_NERD_tree_', 'time': 1223860279}
+MruFile	{'path': '/home/dave/1223860278_NERD_tree_', 'time': 1223860278}
+MruFile	{'path': '/home/dave/1223860150_NERD_tree_', 'time': 1223860150}
+MruFile	{'path': '/home/dave/1223859755_NERD_tree_', 'time': 1223859755}
+MruFile	{'path': '/home/dave/1223859703_NERD_tree_', 'time': 1223859703}
+MruFile	{'path': '/etc/apache2/apache2.conf', 'time': 1223859397}
+MruFile	{'path': '/etc/hosts', 'time': 1223859081}
+MruFile	{'path': '/home/dave/1223857664_NERD_tree_', 'time': 1223857664}
+MruFile	{'path': '/home/dave/Code/three_psms/', 'time': 1223857649}
+MruCmd	{'time': 1223866212, 'command': ':q'}
+MruCmd	{'time': 1223866205, 'command': ':NERDTree'}
+MruCmd	{'time': 1223866196, 'command': ':wq'}
+MruCmd	{'time': 1223866109, 'command': '/ir_'}
+MruCmd	{'time': 1223866023, 'command': '=RubyEndToken()'}
+MruCmd	{'time': 1223865342, 'command': ':h bufexplorer'}
+MruCmd	{'time': 1223865153, 'command': ':HSBufExplorer'}
+MruCmd	{'time': 1223865111, 'command': ':helptag ~/.vim/doc'}
+MruCmd	{'time': 1223865069, 'command': ':h bufexplorer.txt'}
+MruCmd	{'time': 1223865051, 'command': ':h BufExplorer'}
+MruCmd	{'time': 1223860292, 'command': ':qa'}
+MruCmd	{'time': 1223860162, 'command': ':source ~/.vimrc'}
+MruCmd	{'time': 1223860138, 'command': ':w'}
+MruCmd	{'time': 1223860086, 'command': ':h NERD'}
+MruCmd	{'time': 1223860082, 'command': ':h NERDTree'}
+MruCmd	{'time': 1223859898, 'command': ':4sb'}
+MruCmd	{'time': 1223858454, 'command': ':q!'}
+MruCmd	{'time': 1223857033, 'command': ':h tree'}
+MruCmd	{'time': 1223857028, 'command': ':h nerd'}
+MruCmd	{'time': 1223857021, 'command': ':h NERD_tree'}
+MruCmd	{'time': 1223856152, 'command': ':FuzzyFinderTextMate'}
+MruCmd	{'time': 1223856008, 'command': '/map'}
+MruCmd	{'time': 1223856003, 'command': '/lead'}
