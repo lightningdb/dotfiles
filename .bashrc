@@ -92,6 +92,8 @@ alias gst='git status'
 alias sc='./script/console'
 alias ss='./script/server'
 alias ssd='./script/server --debugger'
+alias resd='touch tmp/restart.txt; touch tmp/debug.txt'
+alias res='touch tmp/restart.txt'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -101,3 +103,6 @@ if [ -f /etc/bash_completion ]; then
 fi
 export JAVA_HOME=/usr/local/lib/java
 
+# so that we don't use ruby tidy, but rather use w3 validator when verifyin XHTML in ruby tests
+# note that our code only tests for the existance of this variable, so any value will act as true
+export W3_VALID=true

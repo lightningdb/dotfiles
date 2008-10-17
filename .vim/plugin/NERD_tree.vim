@@ -3534,3 +3534,4 @@ endfunction
 let &cpo = s:old_cpo
 
 " vim: set sw=4 sts=4 et fdm=marker:
+"
