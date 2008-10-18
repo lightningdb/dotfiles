@@ -1,4 +1,7 @@
 VERSION	206
+MruFile	{'path': '', 'time': 1224371655}
+MruFile	{'path': '/Users/davebolton/1224371636_NERD_tree_', 'time': 1224371636}
+MruFile	{'path': '/Users/davebolton/home/1224331367_NERD_tree_', 'time': 1224331367}
 MruFile	{'path': '/home/dave/Code/three_psms/config/deploy.rb', 'time': 1224211295}
 MruFile	{'path': '/home/dave/Code/three_psms/config/deploy/staging.rb', 'time': 1224211161}
 MruFile	{'path': '/home/dave/Code/three_psms/app/controllers/psms_services_controller.rb', 'time': 1224211110}
@@ -7,7 +10,6 @@ MruFile	{'path': '/home/dave/Code/three_psms/vendor/plugins/attachment_fu/README
 MruFile	{'path': '/home/dave/Code/three_psms/app/models/psms_service.rb', 'time': 1224205766}
 MruFile	{'path': '/home/dave/Code/three_psms/vendor/plugins/attachment_fu/lib/technoweenie/attachment_fu.rb', 'time': 1224204109}
 MruFile	{'path': '/home/dave/Code/three_psms/1224203364_NERD_tree_', 'time': 1224203365}
-MruFile	{'path': '', 'time': 1224137209}
 MruFile	{'path': '/home/dave/Code/mobile_app/vendor/plugins/mobile_engine/app/models/http_access_log.rb', 'time': 1224135679}
 MruFile	{'path': '/home/dave/Code/mobile_app/vendor/plugins/mobile_engine/lib/options.rb', 'time': 1224135677}
 MruFile	{'path': '/home/dave/Code/mobile_app/vendor/plugins/mobile_engine/lib/levenshtein.rb', 'time': 1224135577}
@@ -96,15 +98,17 @@ MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/ap
 MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/assets/stylesheets/comatose_admin.css', 'time': 1223946256}
 MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/app/views/admin/backend_users/_backend_user_bar.html.erb', 'time': 1223946219}
 MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/app/helpers/admin/backend_users_helper.rb', 'time': 1223946202}
-MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/app/helpers/backend_users_helper.rb', 'time': 1223946037}
-MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/app/views/admin/backend_users/_list_actions.rhtml', 'time': 1223946030}
+MruCmd	{'time': 1224371656, 'command': ':q'}
+MruCmd	{'time': 1224371644, 'command': ':ClearAllBookmarks'}
+MruCmd	{'time': 1224371636, 'command': ':NERDTree'}
+MruCmd	{'time': 1224371622, 'command': ':ClearBookmarks'}
+MruCmd	{'time': 1224371603, 'command': ':h NERDTreeBookmarkCommands'}
+MruCmd	{'time': 1224331371, 'command': ':Q'}
 MruCmd	{'time': 1224211295, 'command': ':w'}
-MruCmd	{'time': 1224205987, 'command': ':q'}
 MruCmd	{'time': 1224205820, 'command': ':%s/[ ^I]*$//'}
 MruCmd	{'time': 1224204144, 'command': ':5sb'}
 MruCmd	{'time': 1224204131, 'command': ':8sb'}
 MruCmd	{'time': 1224204114, 'command': '/attach'}
-MruCmd	{'time': 1224203364, 'command': ':NERDTree'}
 MruCmd	{'time': 1224139090, 'command': '=RubyEndToken()'}
 MruCmd	{'time': 1224134440, 'command': ':BufO'}
 MruCmd	{'time': 1224132517, 'command': ':11sb'}
@@ -193,7 +197,3 @@ MruCmd	{'time': 1223874462, 'command': '/rou'}
 MruCmd	{'time': 1223872091, 'command': '::q'}
 MruCmd	{'time': 1223872072, 'command': ':WManager'}
 MruCmd	{'time': 1223872049, 'command': ':WMToggle'}
-MruCmd	{'time': 1223871896, 'command': '/initNerd'}
-MruCmd	{'time': 1223871462, 'command': ':h NE'}
-MruCmd	{'time': 1223871426, 'command': '/Start'}
-MruCmd	{'time': 1223871141, 'command': ':e winmanager.vim'}
