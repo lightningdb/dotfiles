@@ -1,5 +1,8 @@
 VERSION	206
-MruFile	{'path': '', 'time': 1224371655}
+MruFile	{'path': '/Users/davebolton/Code/frontfoot/sportingbet.git/test/unit/runner_test.rb', 'time': 1224545701}
+MruFile	{'path': '', 'time': 1224545694}
+MruFile	{'path': '/Users/davebolton/Code/frontfoot/sportingbet.git/', 'time': 1224545075}
+MruFile	{'path': '/Users/davebolton/Code/indulge/README', 'time': 1224539319}
 MruFile	{'path': '/Users/davebolton/1224371636_NERD_tree_', 'time': 1224371636}
 MruFile	{'path': '/Users/davebolton/home/1224331367_NERD_tree_', 'time': 1224331367}
 MruFile	{'path': '/home/dave/Code/three_psms/config/deploy.rb', 'time': 1224211295}
@@ -95,10 +98,8 @@ MruFile	{'path': '/home/dave/Code/three_psms/app/controllers/users_controller.rb
 MruFile	{'path': '/home/dave/Code/mobile_app.2.2/config/initializers/site_keys.rb', 'time': 1223946894}
 MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/app/controllers/admin/reports_controller.rb', 'time': 1223946869}
 MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/app/views/admin/shared/_header.rhtml', 'time': 1223946681}
-MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/assets/stylesheets/comatose_admin.css', 'time': 1223946256}
-MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/app/views/admin/backend_users/_backend_user_bar.html.erb', 'time': 1223946219}
-MruFile	{'path': '/home/dave/Code/mobile_app.2.2/vendor/plugins/mobile_engine/app/helpers/admin/backend_users_helper.rb', 'time': 1223946202}
-MruCmd	{'time': 1224371656, 'command': ':q'}
+MruCmd	{'time': 1224543969, 'command': ':q!'}
+MruCmd	{'time': 1224543965, 'command': ':q'}
 MruCmd	{'time': 1224371644, 'command': ':ClearAllBookmarks'}
 MruCmd	{'time': 1224371636, 'command': ':NERDTree'}
 MruCmd	{'time': 1224371622, 'command': ':ClearBookmarks'}
@@ -139,7 +140,6 @@ MruCmd	{'time': 1224047687, 'command': '/login_path'}
 MruCmd	{'time': 1224047644, 'command': ':12b'}
 MruCmd	{'time': 1224047460, 'command': ':18sb'}
 MruCmd	{'time': 1224045454, 'command': ':14sb'}
-MruCmd	{'time': 1224042788, 'command': ':q!'}
 MruCmd	{'time': 1224042036, 'command': '/MOBIL'}
 MruCmd	{'time': 1224041898, 'command': ':8b'}
 MruCmd	{'time': 1224041861, 'command': '/site'}
