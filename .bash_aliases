@@ -14,6 +14,10 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias lr='ls -R'
+alias lh='ls | head'
+
+alias h='history'
 
 alias gst='git status'
 alias gca='git commit -a -m'
@@ -25,4 +29,7 @@ alias res='touch tmp/restart.txt'
 
 alias sshffdev='ssh www@dev.hermes.three.com.au'
 alias sshffprod='ssh www@hermes.three.com.au'
+alias sshtb='ssh www@trenderbender.com -p 30000'
+alias sshind='ssh ubuntu@indulgefashion.com.au'
+alias sshdb='ssh davebol0@davebolton.net'
 

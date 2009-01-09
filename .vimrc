@@ -1,3 +1,5 @@
+let mapleader = ","
+
 set t_Co=256
 colorscheme railscasts
 
@@ -6,10 +8,21 @@ set nocompatible
 " add recently accessed projects menu (project plugin)
 set viminfo^=!
 
+set grepprg=ack\ -H\ --nocolor\ --nogroup
+set grepformat=%f:%l:%m
+
+:nnoremap <leader>d :NERDTreeToggle<CR>
+
 " Fuzzy Finder Textmate settings
 let g:fuzzy_ceiling = 50000
 let g:fuzzy_ignore = "git/**/*;.svn;.svn/**/*"
 
+map <leader>t :FuzzyFinderTextMate<CR>
+map <leader>b :FuzzyFinderBuffer<CR>
+map <leader>] :FuzzyFinderMruFile<CR>
+
+" NERD snippets
+"let g:NERDSnippets_key = "<c-[>"
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
@@ -60,23 +73,22 @@ set softtabstop=2
 set shiftwidth=2
 
 " turn mouse on
-" set mouse=a
+set mouse=a
 
 " space = pagedown, - = pageup
 noremap <Space> <PageDown>
 noremap - <PageUp>
 
 " remap'd keys
-map <Tab><Tab> <C-W>w
+"map <Tab><Tab> <C-W>w
 nnoremap <F5><F5> :set invhls hls?<CR>    " use f5f5 to toggle search hilight
 nnoremap <F4><F4> :set invwrap wrap?<CR>  " use f4f4 to toggle wordwrap
 nnoremap <F2><F2> :vsplit<CR>
 nnoremap <F3><F3> <C-W>w
 map <C-t> <Esc>:%s/[ ^I]*$//<CR>
-nmap ,s :source ~/.vimrc
-nmap ,v :e ~/.vimrc
-map ,t :FuzzyFinderTextMate<CR>
-map ,n :NERDTree<CR>
+nmap <leader>s :source ~/.vimrc
+nmap <leader>v :e ~/.vimrc
+map <leader>n :NERDTree<CR>
 
 
 function RubyEndToken ()
