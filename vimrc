@@ -26,8 +26,9 @@ map <leader>F :Ack<space>
 :nnoremap <leader>d :NERDTreeToggle<CR>
 
 " Fuzzy Finder Textmate settings
-let g:fuzzy_ceiling = 50000
-let g:fuzzy_ignore = "git/**/*;.svn;.svn/**/*"
+let g:fuzzy_matching_limit=50
+let g:fuzzy_ceiling = 5000
+let g:fuzzy_ignore = "*.log;*.gif;*.png;git/**/*;.svn;.svn/**/*"
 
 map <leader>t :FuzzyFinderTextMate<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
