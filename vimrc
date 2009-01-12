@@ -22,17 +22,16 @@ command! -nargs=* -complete=file Ack call Ack(<q-args>)
 " ,F to startup an ack search
 map <leader>F :Ack<space>
 
-
-:nnoremap <leader>d :NERDTreeToggle<CR>
-
 " Fuzzy Finder Textmate settings
 let g:fuzzy_matching_limit=50
 let g:fuzzy_ceiling = 5000
 let g:fuzzy_ignore = "*.log;*.gif;*.png;git/**/*;.svn;.svn/**/*"
 
 map <leader>t :FuzzyFinderTextMate<CR>
+map <leader>m :FuzzyFinderTag<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>] :FuzzyFinderMruFile<CR>
+map <leader>w :BufO<CR>
 
 " NERD snippets
 "let g:NERDSnippets_key = "<c-[>"
@@ -101,8 +100,8 @@ nnoremap <F3><F3> <C-W>w
 map <C-t> <Esc>:%s/[ ^I]*$//<CR>
 nmap <leader>s :source ~/.vimrc
 nmap <leader>v :e ~/.vimrc
-map <leader>n :NERDTree<CR>
-
+nnoremap <leader>d :NERDTreeToggle<CR>
+nnoremap <F6><F6> :TlistToggle<CR>
 
 function RubyEndToken ()
   let current_line = getline( '.' )
