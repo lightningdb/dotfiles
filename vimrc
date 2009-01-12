@@ -1,12 +1,9 @@
+set nocompatible
+
 let mapleader = ","
 
 set t_Co=256
 colorscheme railscasts
-
-set nocompatible
-
-" add recently accessed projects menu (project plugin)
-set viminfo^=!
 
 set grepprg=ack\ -H\ --nocolor\ --nogroup
 set grepformat=%f:%l:%m
@@ -34,7 +31,8 @@ map <leader>] :FuzzyFinderMruFile<CR>
 map <leader>w :BufO<CR>
 
 " NERD snippets
-"let g:NERDSnippets_key = "<c-[>"
+let g:NERDSnippets_key="<C-tab>"
+
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
@@ -42,7 +40,7 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 " Change which file opens after executing :Rails command
 let g:rails_default_file='config/database.yml'
- 
+
 syntax on
 
 set wildmenu
@@ -103,30 +101,30 @@ nmap <leader>v :e ~/.vimrc
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <F6><F6> :TlistToggle<CR>
 
-function RubyEndToken ()
-  let current_line = getline( '.' )
-  let braces_at_end = '{\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
-  let stuff_without_do = '^\s*\(class\|if\|unless\|begin\|case\|for\|module\|while\|until\|def\)'
-  let with_do = 'do\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
-
-  if match(current_line, braces_at_end) >= 0
-    return "\<CR>}\<C-O>O" 
-  elseif match(current_line, stuff_without_do) >= 0
-    return "\<CR>end\<C-O>O" 
-  elseif match(current_line, with_do) >= 0
-    return "\<CR>end\<C-O>O" 
-  else
-    return "\<CR>" 
-  endif
-endfunction
-
-imap <buffer> <CR> <C-R>=RubyEndToken()<CR>
+"function RubyEndToken ()
+"  let current_line = getline( '.' )
+"  let braces_at_end = '{\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
+"  let stuff_without_do = '^\s*\(class\|if\|unless\|begin\|case\|for\|module\|while\|until\|def\)'
+"  let with_do = 'do\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
+"
+"  if match(current_line, braces_at_end) >= 0
+"    return "\<CR>}\<C-O>O"
+"  elseif match(current_line, stuff_without_do) >= 0
+"    return "\<CR>end\<C-O>O"
+"  elseif match(current_line, with_do) >= 0
+"    return "\<CR>end\<C-O>O"
+"  else
+"    return "\<CR>"
+"  endif
+"endfunction
+"
+"imap <buffer> <CR> <C-R>=RubyEndToken()<CR>
 
 " backup to ~/.tmp
 "set backup
 "set backupdir=$HOME/.tmp
 "set writebackup
- 
+
 " misc
 "set ai
 set nohls
@@ -139,5 +137,5 @@ filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
 " :alias
-com VR :vertical resize 80
+"com VR :vertical resize 80
 
