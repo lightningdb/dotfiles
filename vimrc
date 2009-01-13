@@ -24,14 +24,16 @@ let g:fuzzy_matching_limit=50
 let g:fuzzy_ceiling = 5000
 let g:fuzzy_ignore = "*.log;*.gif;*.png;git/**/*;.svn;.svn/**/*"
 
-map <leader>t :FuzzyFinderTextMate<CR>
-map <leader>m :FuzzyFinderTag<CR>
+map <leader>f :FuzzyFinderTextMate<CR>
+map <leader>t :FuzzyFinderTag<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>] :FuzzyFinderMruFile<CR>
 map <leader>w :BufO<CR>
 
 " NERD snippets
-let g:NERDSnippets_key="<C-tab>"
+"let g:NERDSnippets_key="<S-space>"
+"let g:NERDSnippets_key="<C-tab>"
+let g:NERDSnippets_key="<F7><F7>"
 
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
