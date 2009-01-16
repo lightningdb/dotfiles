@@ -1,1 +1,1 @@
-/Users/davebolton/home/vim-cucumber/ftplugin/cucumber.vim
+../../vim-cucumber/ftplugin/cucumber.vim

@@ -1,1 +1,1 @@
-/Users/davebolton/home/vim-rails/autoload/rails.vim
+../../vim-rails/autoload/rails.vim

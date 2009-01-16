@@ -1,1 +1,1 @@
-/Users/davebolton/home/vim-rails/doc/rails.txt
+../../vim-rails/doc/rails.txt
