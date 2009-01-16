@@ -1,1 +1,1 @@
-/Users/davebolton/home/fuzzyfinder_textmate/fuzzyfinder_textmate.vim
+../../fuzzyfinder_textmate/fuzzyfinder_textmate.vim

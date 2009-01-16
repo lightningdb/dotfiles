@@ -29,6 +29,10 @@ map <leader>t :FuzzyFinderTag<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>] :FuzzyFinderMruFile<CR>
 map <leader>w :BufO<CR>
+map <leader>r :Rake<CR>
+
+"   * if set g:gist_clip_command, gist.vim will copy the gist code.
+let g:gist_clip_command = 'pbcopy'
 
 " NERD snippets
 "let g:NERDSnippets_key="<S-space>"
