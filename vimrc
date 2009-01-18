@@ -20,12 +20,12 @@ command! -nargs=* -complete=file Ack call Ack(<q-args>)
 map <leader>F :Ack<space>
 
 " Fuzzy Finder Textmate settings
-let g:fuzzy_matching_limit=50
-let g:fuzzy_ceiling = 5000
-let g:fuzzy_ignore = "*.log;*.gif;*.png;git/**/*;.svn;.svn/**/*"
+let g:fuzzy_matching_limit=200
+let g:fuzzy_ceiling = 10000
+let g:fuzzy_ignore = "tags;*.log;*.gif;*.png;.git/**/*;.svn;.svn/**/*"
 
-map <leader>f :FuzzyFinderTextMate<CR>
-map <leader>t :FuzzyFinderTag<CR>
+map <leader>t :FuzzyFinderTextMate<CR>
+map <leader><S-t> :FuzzyFinderTag<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>] :FuzzyFinderMruFile<CR>
 map <leader>w :BufO<CR>
@@ -141,7 +141,4 @@ set nowrap
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
-
-" :alias
-"com VR :vertical resize 80
 
