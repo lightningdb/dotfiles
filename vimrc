@@ -16,8 +16,7 @@ function! Ack(args)
   let &grepprg=grepprg_bak
 endfunction
 command! -nargs=* -complete=file Ack call Ack(<q-args>)
-" ,F to startup an ack search
-map <leader>F :Ack<space>
+map <leader>f :Ack<space>
 
 " Fuzzy Finder Textmate settings
 let g:fuzzy_matching_limit=200
@@ -28,7 +27,7 @@ map <leader>t :FuzzyFinderTextMate<CR>
 map <leader><S-t> :FuzzyFinderTag<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>] :FuzzyFinderMruFile<CR>
-map <leader>w :BufO<CR>
+map <leader>q :BufO<CR>
 map <leader>r :Rake<CR>
 
 "   * if set g:gist_clip_command, gist.vim will copy the gist code.
