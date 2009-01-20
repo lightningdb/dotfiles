@@ -21,7 +21,7 @@ map <leader>f :Ack<space>
 " Fuzzy Finder Textmate settings
 let g:fuzzy_matching_limit=200
 let g:fuzzy_ceiling = 10000
-let g:fuzzy_ignore = "tags;*.log;*.gif;*.png;.git/**/*;.svn;.svn/**/*"
+let g:fuzzy_ignore = "tags;*.log;*.jpg;*.gif;*.png;.git/**/*;.svn;.svn/**/*"
 
 map <leader>t :FuzzyFinderTextMate<CR>
 map <leader><S-t> :FuzzyFinderTag<CR>
