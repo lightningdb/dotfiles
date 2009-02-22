@@ -137,6 +137,8 @@ set incsearch
 set showcmd
 set nowrap
 
+let html_use_css=1
+
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins

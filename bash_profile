@@ -15,3 +15,10 @@ export HISTCONTROL=erasedups
 export HISTSIZE=10000
 shopt -s histappend
 
+########
+# RUBY #
+########
+alias irb='irb --readline -r irb/completion -rubygems'
+function cdgem {
+  pushd /opt/local/lib/ruby/gems/1.8/gems/; cd `ls|grep $1|sort|tail -1`
+}
