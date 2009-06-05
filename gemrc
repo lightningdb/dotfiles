@@ -7,4 +7,5 @@
 :verbose: true
 :backtrace: false
 :benchmark: false
-gem: --no-rdoc --no-ri
+rdoc: --inline-source --line-numbers --format=html --template=hanna
+gem: --no-ri

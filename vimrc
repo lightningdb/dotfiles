@@ -30,6 +30,12 @@ map <leader>] :FuzzyFinderMruFile<CR>
 map <leader>q :BufO<CR>
 map <leader>r :Rake<CR>
 
+" folding settings
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
+
 "   * if set g:gist_clip_command, gist.vim will copy the gist code.
 let g:gist_clip_command = 'pbcopy'
 

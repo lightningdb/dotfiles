@@ -43,7 +43,7 @@ let s:snippets = {}
 let s:snippets['_'] = {}
 
 function! s:enableMaps()
-    exec "inoremap ".g:NERDSnippets_key." <c-r>=NERDSnippets_ExpandSnippet()<cr><c-g>u<c-r>=NERDSnippets_SwitchRegion(1)<cr>"
+    exec "inoremap ".g:NERDSnippets_key." <c-o>:call NERDSnippets_PreExpand()<cr><c-r>=NERDSnippets_ExpandSnippet()<cr><c-o>:call NERDSnippets_PostExpand()<cr><c-g>u<c-r>=NERDSnippets_SwitchRegion(1)<cr>"
     exec "nnoremap ".g:NERDSnippets_key." i<c-g>u<c-r>=NERDSnippets_SwitchRegion(0)<cr>"
     exec "snoremap ".g:NERDSnippets_key." <esc>i<c-g>u<c-r>=NERDSnippets_SwitchRegion(0)<cr>"
 endfunction
@@ -86,11 +86,24 @@ function! NERDSnippets_ExpandSnippet()
     if snippet != ''
         let s:appendTab = 0
         let s:topOfSnippet = line('.')
-        let snippet = "\<c-w>" . snippet
+        let snippet = "\<c-o>ciw" . snippet
     else
         let s:appendTab = 1
     endif
     return snippet
+endfunction
+
+function! NERDSnippets_PreExpand()
+    let b:NERDSnippets_old_format_options = &fo
+    setl fo-=t
+    setl fo-=c
+    setl fo-=r
+    setl fo-=a
+    setl fo-=n
+endfunction
+
+function! NERDSnippets_PostExpand()
+    let &l:fo = b:NERDSnippets_old_format_options
 endfunction
 
 "jump to the next marker, remove the delimiters and select the text inside in
@@ -253,7 +266,7 @@ function! s:removeMarkers()
 endfunction
 
 "add a new snippet for the given filetype and keyword
-function! NERDSnippet(filetype, keyword, expansion, ...)
+function! s:addSnippet(filetype, keyword, expansion, ...)
     if !has_key(s:snippets, a:filetype)
         let s:snippets[a:filetype] = {}
     endif
@@ -272,15 +285,6 @@ function! NERDSnippet(filetype, keyword, expansion, ...)
     call add(s:snippets[a:filetype][a:keyword], newSnippet)
 endfunction
 
-"add a new global snippet for the given keyword
-function! NERDSnippetGlobal(keyword, expansion, ...)
-    let snippetName = ''
-    if a:0
-        let snippetName = a:1
-    endif
-    call NERDSnippet('_', a:keyword, a:expansion, snippetName)
-endfunction
-
 "remove all snippets
 function! NERDSnippetsReset()
     let s:snippets = {}
@@ -291,21 +295,6 @@ endfunction
 "Extract snippets from the given directory. The snippet filetype, keyword, and
 "possibly name, are all inferred from the path of the .snippet files relative
 "to a:dir.
-"
-"This assumes a precise file naming scheme:
-"
-"For single snippets
-"    a:dir/<filetype>/<keyword>.snippet
-"
-"eg
-"    a:dir/html/href.snippet
-"
-"For multiple snippets bound to a single keyword
-"    a:dir/<filetype>/<keyword>/<snippet-name>.snippet
-"
-"eg
-"    a:dir/html/table/simple.snippet
-"    a:dir/html/table/hardcore.snippet
 function! NERDSnippetsFromDirectory(dir)
     let snippetFiles = split(globpath(expand(a:dir), '**/*.snippet'), '\n')
     for fullpath in snippetFiles
@@ -325,29 +314,6 @@ endfunction
 "
 "The snippet keywords (and possibly names) are interred from the path of the
 ".snippet files relative to a:dir
-"
-"This assumes a precise file naming scheme:
-"
-"For single snippets
-"    a:dir/<keyword>.snippet
-"
-"eg
-"    a:dir/href.snippet
-"
-"For multiple snippets bound to a single keyword
-"    a:dir/<keyword>/<snippet-name>.snippet
-"
-"eg
-"    a:dir/table/simple.snippet
-"    a:dir/table/hardcore.snippet
-"
-"The main purpose of this function is to allow users to manually associate a
-"collection of snippets with a filetype. For example, you probably want all
-"your html snippets to also be used for the xhtml filetype. So (somewhere like
-" ~/.vim/after/plugin/snippet_setup.vim) you could call this:
-"
-"    NERDSnippetsFromDirectoryForFiletype('~/.vim/snippets/html', 'xhtml')
-"
 function! NERDSnippetsFromDirectoryForFiletype(dir, filetype)
     let snippetFiles = split(globpath(expand(a:dir), '**/*.snippet'), '\n')
     for i in snippetFiles
@@ -386,7 +352,7 @@ function! s:extractSnippetFor(fullpath, filetype, tail)
 
     let snippetContent = s:parseSnippetFile(a:fullpath)
 
-    call NERDSnippet(a:filetype, keyword, snippetContent, name)
+    call s:addSnippet(a:filetype, keyword, snippetContent, name)
 endfunction
 
 
@@ -400,10 +366,13 @@ function! s:parseSnippetFile(path)
 
     let i = 0
     while i < len(lines)
-        "remove leading whitespace and add \<CR> to the end of the lines
+        "add \<CR> to the end of the lines, but not the last line
         if i < len(lines)-1
-            let lines[i] = substitute(lines[i], '^\s*\(.*\)$', '\1' . "\<CR>", "")
+            let lines[i] = substitute(lines[i], '$', '\1' . "\<CR>", "")
         endif
+
+        "remove leading whitespace
+        let lines[i] = substitute(lines[i], '^\s*', '', '')
 
         "make \<C-R>= function in the templates
         let lines[i] = substitute(lines[i], '\c\\<c-r>=', "\<c-r>=", "g")
@@ -419,5 +388,32 @@ function! s:parseSnippetFile(path)
 
     return join(lines, '')
 endfunction
+
+"some global functions that are handy inside snippet files {{{1
+function! NS_prompt(varname, prompt, default)
+    "input(save|restore) needed because this function is called during a
+    "mapping
+    call inputsave()
+    let input = input(a:prompt . ':', a:default)
+    exec "let g:" . a:varname . "='" . escape(input, "'") . "'"
+    call inputrestore()
+    redraw!
+    return input
+endfunction
+
+function! NS_camelcase(s)
+    "upcase the first letter
+    let toReturn = substitute(a:s, '^\(.\)', '\=toupper(submatch(1))', '')
+    "turn all '_x' into 'X'
+    return substitute(toReturn, '_\(.\)', '\=toupper(submatch(1))', 'g')
+endfunction
+
+function! NS_underscore(s)
+    "down the first letter
+    let toReturn = substitute(a:s, '^\(.\)', '\=tolower(submatch(1))', '')
+    "turn all 'X' into '_x'
+    return substitute(toReturn, '\([A-Z]\)', '\=tolower("_".submatch(1))', 'g')
+endfunction
+"}}}
 
 " vim: set ft=vim ff=unix fdm=marker :
