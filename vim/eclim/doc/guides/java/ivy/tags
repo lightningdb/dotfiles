@@ -1,0 +1,3 @@
+:IvyDependencySearch	classpath.txt	/*:IvyDependencySearch*
+:IvyRepo	classpath.txt	/*:IvyRepo*
+guides-java-ivy-classpath	classpath.txt	/*guides-java-ivy-classpath*

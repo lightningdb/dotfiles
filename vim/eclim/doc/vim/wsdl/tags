@@ -1,0 +1,4 @@
+:Validate_wsdl	validate.txt	/*:Validate_wsdl*
+g:EclimWsdlValidate	validate.txt	/*g:EclimWsdlValidate*
+vim-wsdl-index	index.txt	/*vim-wsdl-index*
+vim-wsdl-validate	validate.txt	/*vim-wsdl-validate*
