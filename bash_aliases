@@ -27,9 +27,6 @@ alias ssd='./script/server --debugger'
 alias resd='touch tmp/restart.txt; touch tmp/debug.txt'
 alias res='touch tmp/restart.txt'
 
-alias sshffdev='ssh www@dev.frontfoot.com.au'
-alias sshffprod='ssh www@hermes.three.com.au'
 alias sshtb='ssh www@trenderbender.com -p 30000'
-alias sshind='ssh ubuntu@indulgefashion.com.au'
 alias sshdb='ssh davebol0@davebolton.net'
 
