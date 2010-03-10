@@ -1,4 +1,6 @@
 colorscheme ir_black
+set guifont=inconsolata
+
 
 syntax on
 

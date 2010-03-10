@@ -1,7 +1,7 @@
-#!/usr/bin/bash
-ln -s /Users/davebolton/home/vimrc .vimrc
-ln -s /Users/davebolton/home/rdebugrc .rdebugrc
-ln -s /Users/davebolton/home/gvimrc .gvimrc
-ln -s /Users/davebolton/home/gemrc .gemrc
-ln -s /Users/davebolton/home/bash_aliases .bash_aliases
-ln -s /Users/davebolton/home/bash_profile .bash_profile
+#!/bin/zsh
+ln -s /home/davidbolton/home/vimrc .vimrc
+ln -s /home/davidbolton/home/rdebugrc .rdebugrc
+ln -s /home/davidbolton/home/gvimrc .gvimrc
+ln -s /home/davidbolton/home/gemrc .gemrc
+ln -s /home/davidbolton/home/bash_aliases .bash_aliases
+ln -s /home/davidbolton/home/bash_profile .bash_profile
