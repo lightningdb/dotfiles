@@ -37,14 +37,6 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=1
 
-"   * if set g:gist_clip_command, gist.vim will copy the gist code.
-let g:gist_clip_command = 'pbcopy'
-
-" NERD snippets
-"let g:NERDSnippets_key="<S-space>"
-"let g:NERDSnippets_key="<C-tab>"
-let g:NERDSnippets_key="<F7><F7>"
-
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
@@ -113,25 +105,6 @@ nmap <leader>v :e ~/.vimrc
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <F6><F6> :TlistToggle<CR>
 
-"function RubyEndToken ()
-"  let current_line = getline( '.' )
-"  let braces_at_end = '{\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
-"  let stuff_without_do = '^\s*\(class\|if\|unless\|begin\|case\|for\|module\|while\|until\|def\)'
-"  let with_do = 'do\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
-"
-"  if match(current_line, braces_at_end) >= 0
-"    return "\<CR>}\<C-O>O"
-"  elseif match(current_line, stuff_without_do) >= 0
-"    return "\<CR>end\<C-O>O"
-"  elseif match(current_line, with_do) >= 0
-"    return "\<CR>end\<C-O>O"
-"  else
-"    return "\<CR>"
-"  endif
-"endfunction
-"
-"imap <buffer> <CR> <C-R>=RubyEndToken()<CR>
-
 " backup to ~/.tmp
 "set backup
 "set backupdir=$HOME/.tmp
@@ -146,6 +119,12 @@ set nowrap
 
 let html_use_css=1
 
+" set up pathogen to allow plugin bundling
+filetype off
+call pathogen#runtime_append_all_bundles()
+" following line is for ervandew's plugins (including supertab etc)
+set rtp+=~/home/ervandew-vimfiles/vim
+
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
@@ -159,3 +138,5 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
+" vimwiki options
+let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
