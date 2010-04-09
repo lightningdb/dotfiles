@@ -49,3 +49,6 @@
 [submodule "ervandew-vimfiles"]
 	path = ervandew-vimfiles
 	url = http://github.com/ervandew/vimfiles.git
+[submodule "vim-pathogen"]
+	path = vim-pathogen
+	url = git://github.com/tpope/vim-pathogen.git
