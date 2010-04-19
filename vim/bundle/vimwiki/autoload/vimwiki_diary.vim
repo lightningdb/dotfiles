@@ -1,3 +1,4 @@
+" vim:tabstop=2:shiftwidth=2:expandtab:foldmethod=marker:textwidth=79
 " Vimwiki autoload plugin file
 " Desc: Handle diary notes
 " Author: Maxim Kim <habamax@gmail.com>
@@ -20,7 +21,7 @@ endfunction "}}}
 function! s:desc(d1, d2) "{{{
   return a:d1 == a:d2 ? 0 : a:d1 < a:d2 ? 1 : -1
 endfunction "}}}
-    
+
 function! s:get_date_link(fmt) "{{{
   return strftime(a:fmt)
 endfunction "}}}
@@ -50,7 +51,7 @@ function! s:get_diary_range(lines, header) "{{{
   let ln_start = -1
   let ln_end = -1
   for line in a:lines
-    if ln_start != -1 
+    if ln_start != -1
       if line =~ '^\s*\(=\)\+.*\1\s*$' || (line !~ rx && line !~ '^\s*$')
         break
       endif
@@ -85,15 +86,15 @@ endfunction "}}}
 
 function! s:get_links() "{{{
   let rx = '\d\{4}-\d\d-\d\d'
-  let s_links = glob(VimwikiGet('path').VimwikiGet('diary_rel_path').'*.wiki')
-    
-  "let s_links = substitute(s_links, '\'.VimwikiGet('ext'), "", "g")
-  let s_links = substitute(s_links, '\.wiki', "", "g")
+  let s_links = glob(VimwikiGet('path').VimwikiGet('diary_rel_path').'*.'.VimwikiGet('ext'))
+
+  let s_links = substitute(s_links, '\'.VimwikiGet('ext'), "", "g")
+  "let s_links = substitute(s_links, '\.txt', "", "g")
   let links = split(s_links, '\n')
 
   " remove backup files (.wiki~)
   call filter(links, 'v:val !~ ''.*\~$''')
-  
+
   " remove paths
   call map(links, 'fnamemodify(v:val, ":t")')
 
@@ -144,10 +145,10 @@ function! s:add_link(page, header, link) "{{{
       call remove(lines, ln_start)
       let idx -= 1
     endwhile
-    
+
     " get all diary links from filesystem
     let links = s:get_links()
-    
+
     " add current link
     if index(links, link) == -1
       call add(links, link)

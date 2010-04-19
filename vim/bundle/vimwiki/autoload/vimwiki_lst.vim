@@ -1,3 +1,4 @@
+" vim:tabstop=2:shiftwidth=2:expandtab:foldmethod=marker:textwidth=79
 " Vimwiki autoload plugin file
 " Todo lists related stuff here.
 " Author: Maxim Kim <habamax@gmail.com>
