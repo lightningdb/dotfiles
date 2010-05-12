@@ -70,7 +70,7 @@ function! s:create_default_CSS(path) " {{{
     call vimwiki#mkdir(fnamemodify(css_full_name, ':p:h'))
     let lines = []
 
-    call add(lines, 'body {font-family: Arial, sans-serif; margin: 1em 2em 1em 2em; font-size: 100%; line-height: 130%;}')
+    call add(lines, 'body {font-family: Tahoma, sans-serif; margin: 1em 2em 1em 2em; font-size: 100%; line-height: 130%;}')
     call add(lines, 'h1, h2, h3, h4, h5, h6 {font-family: Trebuchet MS, serif; margin-top: 1.5em; margin-bottom: 0.5em;}')
     call add(lines, 'h1 {font-size: 2.0em; color: #a77070;}')
     call add(lines, 'h2 {font-size: 1.6em; color: #779977;}')
@@ -288,7 +288,10 @@ function! s:get_html_toc(toc_list) "{{{
     elseif level < plevel
       let plevel = s:close_list(toc, plevel, level)
     endif
-    call add(toc, '<li><a href="#'.id.'">'.text.'</a></li>')
+
+    let toc_text = s:process_tags_remove_links(text)
+    let toc_text = s:process_tags_typefaces(toc_text)
+    call add(toc, '<li><a href="#'.id.'">'.toc_text.'</a></li>')
     let plevel = level
   endfor
   call s:close_list(toc, level, 0)
@@ -346,39 +349,6 @@ endfunction "}}}
 
 function! s:tag_pre(value) "{{{
   return '<code>'.s:mid(a:value, 3).'</code>'
-endfunction "}}}
-
-function! s:tag_external_link(value) "{{{
-  "" Make <a href="link">link desc</a>
-  "" from [link link desc]
-
-  let value = s:mid(a:value, 1)
-
-  let line = ''
-  if s:is_web_link(value)
-    let lnkElements = split(value)
-    let head = lnkElements[0]
-    let rest = join(lnkElements[1:])
-    if rest==""
-      let rest=head
-    endif
-    if s:is_img_link(rest)
-      if rest!=head
-        let line = '<a href="'.head.'"><img src="'.rest.'" /></a>'
-      else
-        let line = '<img src="'.rest.'" />'
-      endif
-    else
-      let line = '<a href="'.head.'">'.rest.'</a>'
-    endif
-  elseif s:is_img_link(value)
-    let line = '<img src="'.value.'" />'
-  else
-    " [alskfj sfsf] shouldn't be a link. So return it as it was --
-    " enclosed in [...]
-    let line = '['.value.']'
-  endif
-  return line
 endfunction "}}}
 
 function! s:tag_internal_link(value) "{{{
@@ -445,14 +415,48 @@ function! s:tag_internal_link(value) "{{{
   return line
 endfunction "}}}
 
+function! s:tag_external_link(value) "{{{
+  "" Make <a href="link">link desc</a>
+  "" from [link link desc]
+
+  let value = s:mid(a:value, 1)
+
+  let line = ''
+  if s:is_web_link(value)
+    let lnkElements = split(value)
+    let head = lnkElements[0]
+    let rest = join(lnkElements[1:])
+    if rest==""
+      let rest=head
+    endif
+    if s:is_img_link(rest)
+      if rest!=head
+        let line = '<a href="'.head.'"><img src="'.rest.'" /></a>'
+      else
+        let line = '<img src="'.rest.'" />'
+      endif
+    else
+      let line = '<a href="'.head.'">'.rest.'</a>'
+    endif
+  elseif s:is_img_link(value)
+    let line = '<img src="'.value.'" />'
+  else
+    " [alskfj sfsf] shouldn't be a link. So return it as it was --
+    " enclosed in [...]
+    let line = '['.value.']'
+  endif
+  return line
+endfunction "}}}
+
 function! s:tag_wikiword_link(value) "{{{
   " Make <a href="WikiWord">WikiWord</a> from WikiWord
-  " if first symbol is ! then remove it and make no link.
   if a:value[0] == '!'
     return a:value[1:]
-  else
+  elseif g:vimwiki_camel_case
     let line = '<a href="'.a:value.'.html">'.a:value.'</a>'
     return line
+  else
+    return a:value
   endif
 endfunction "}}}
 
@@ -464,6 +468,59 @@ function! s:tag_barebone_link(value) "{{{
     let line = '<img src="'.a:value.'" />'
   else
     let line = '<a href="'.a:value.'">'.a:value.'</a>'
+  endif
+  return line
+endfunction "}}}
+
+function! s:tag_no_wikiword_link(value) "{{{
+  if a:value[0] == '!'
+    return a:value[1:]
+  else
+    return a:value
+  endif
+endfunction "}}}
+
+function! s:tag_remove_internal_link(value) "{{{
+  let value = s:mid(a:value, 2)
+
+  let line = ''
+  if value =~ '|'
+    let link_parts = split(value, "|", 1)
+  else
+    let link_parts = split(value, "][", 1)
+  endif
+
+  if len(link_parts) > 1
+    if len(link_parts) < 3
+      let style = ""
+    else
+      let style = link_parts[2]
+    endif
+    let line = link_parts[1]
+  else
+    let line = value
+  endif
+  return line
+endfunction "}}}
+
+function! s:tag_remove_external_link(value) "{{{
+  let value = s:mid(a:value, 1)
+
+  let line = ''
+  if s:is_web_link(value)
+    let lnkElements = split(value)
+    let head = lnkElements[0]
+    let rest = join(lnkElements[1:])
+    if rest==""
+      let rest=head
+    endif
+    let line = rest
+  elseif s:is_img_link(value)
+    let line = '<img src="'.value.'" />'
+  else
+    " [alskfj sfsf] shouldn't be a link. So return it as it was --
+    " enclosed in [...]
+    let line = '['.value.']'
   endif
   return line
 endfunction "}}}
@@ -495,13 +552,16 @@ function! s:make_tag(line, regexp, func) "{{{
   return res_line
 endfunction "}}}
 
-function! s:process_inline_tags(line) "{{{
+function! s:process_tags_remove_links(line) " {{{
   let line = a:line
-  let line = s:make_tag(line, '\[\[.\{-}\]\]', 's:tag_internal_link')
-  let line = s:make_tag(line, '\[.\{-}\]', 's:tag_external_link')
-  let line = s:make_tag(line, g:vimwiki_rxWeblink, 's:tag_barebone_link')
-  let line = s:make_tag(line, '!\?'.g:vimwiki_rxWikiWord,
-        \ 's:tag_wikiword_link')
+  let line = s:make_tag(line, '\[\[.\{-}\]\]', 's:tag_remove_internal_link')
+  let line = s:make_tag(line, '\[.\{-}\]', 's:tag_remove_external_link')
+  return line
+endfunction " }}}
+
+function! s:process_tags_typefaces(line) "{{{
+  let line = a:line
+  let line = s:make_tag(line, g:vimwiki_rxNoWikiWord, 's:tag_no_wikiword_link')
   let line = s:make_tag(line, g:vimwiki_rxItalic, 's:tag_em')
   let line = s:make_tag(line, g:vimwiki_rxBold, 's:tag_strong')
   let line = s:make_tag(line, g:vimwiki_rxTodo, 's:tag_todo')
@@ -511,6 +571,21 @@ function! s:process_inline_tags(line) "{{{
   let line = s:make_tag(line, g:vimwiki_rxCode, 's:tag_code')
   let line = s:make_tag(line, g:vimwiki_rxPreStart.'.\+'.g:vimwiki_rxPreEnd,
         \ 's:tag_pre')
+  return line
+endfunction " }}}
+
+function! s:process_tags_links(line) " {{{
+  let line = a:line
+  let line = s:make_tag(line, '\[\[.\{-}\]\]', 's:tag_internal_link')
+  let line = s:make_tag(line, '\[.\{-}\]', 's:tag_external_link')
+  let line = s:make_tag(line, g:vimwiki_rxWeblink, 's:tag_barebone_link')
+  let line = s:make_tag(line, g:vimwiki_rxWikiWord, 's:tag_wikiword_link')
+  return line
+endfunction " }}}
+
+function! s:process_inline_tags(line) "{{{
+  let line = s:process_tags_links(a:line)
+  let line = s:process_tags_typefaces(line)
   return line
 endfunction " }}}
 "}}}

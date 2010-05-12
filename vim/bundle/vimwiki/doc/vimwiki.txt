@@ -1,14 +1,15 @@
 *vimwiki.txt*   A Personal Wiki for Vim
 
-     __  __  ______            __      __  ______   __  __   ______     ~
-    /\ \/\ \/\__  _\   /'\_/`\/\ \  __/\ \/\__  _\ /\ \/\ \ /\__  _\    ~
-    \ \ \ \ \/_/\ \/  /\      \ \ \/\ \ \ \/_/\ \/ \ \ \/'/'\/_/\ \/    ~
-     \ \ \ \ \ \ \ \  \ \ \__\ \ \ \ \ \ \ \ \ \ \  \ \ , <    \ \ \    ~
-      \ \ \_/ \ \_\ \__\ \ \_/\ \ \ \_/ \_\ \ \_\ \__\ \ \\`\   \_\ \__ ~
-       \ `\___/ /\_____\\ \_\\ \_\ `\___x___/ /\_____\\ \_\ \_\ /\_____\~
-        `\/__/  \/_____/ \/_/ \/_/'\/__//__/  \/_____/ \/_/\/_/ \/_____/~
+             __   __  ___   __   __  _     _  ___   ___   _  ___             ~
+            |  | |  ||   | |  |_|  || | _ | ||   | |   | | ||   |            ~
+            |  |_|  ||   | |       || || || ||   | |   |_| ||   |            ~
+            |       ||   | |       ||       ||   | |      _||   |            ~
+            |       ||   | |       ||       ||   | |     |_ |   |            ~
+             |     | |   | | ||_|| ||   _   ||   | |    _  ||   |            ~
+              |___|  |___| |_|   |_||__| |__||___| |___| |_||___|            ~
 
-                               Version: 1.0 beta
+
+                               Version: 1.0
 
 ==============================================================================
 CONTENTS                                                    *vimwiki-contents*
@@ -538,18 +539,6 @@ You can center your headers in html by placing spaces before the first '=':
 
 
 
-Note: before vimwiki 0.8.2, header's markup syntax used exclamation marks:
-! Header level 1
-!! Header level 2
-etc...
-
-If you upgrade from pre 0.8.2 you might find the next commands useful.
-To change headers from !Header to =Header= in your wiki files do: >
- :args .wiki
- :argdo %s/^\(!\+\)\([^!].*$\)/\=substitute(submatch(1),'!','=','g').submatch(2).substitute(submatch(1),'!','=','g')
-
-Note: BACKUP FIRST!
-
 ------------------------------------------------------------------------------
 5.4. Paragraphs                                    *vimwiki-syntax-paragraphs*
 
@@ -778,6 +767,7 @@ or >
 
 %toc Whatever
 
+
 ------------------------------------------------------------------------------
 %nohtml                                                       *vimwiki-nohtml*
 
@@ -920,6 +910,8 @@ be created in default wiki's diary.
 
 Get it from http://www.vim.org/scripts/script.php?script_id=52
 
+See |g:vimwiki_use_calendar| option to turn it off/on.
+
 
 
 ==============================================================================
@@ -957,6 +949,20 @@ Empty |Dictionary| in the g:vimwiki_list is the wiki with default options: >
 
 <
 
+You can also create wikis as a separate |Dictionary|s. >
+
+    let wiki_1 = {}
+    let wiki_1.path = '~/my_docs/'
+    let wiki_1.html_header = '~/public_html/header.tpl'
+    let wiki_1.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+
+    let wiki_2 = {}
+    let wiki_2.path = '~/project_docs/'
+    let wiki_2.index = 'main'
+
+    let g:vimwiki_list = [wiki_1, wiki_2]
+
+<
 
 PER WIKI OPTIONS                                       *viwmiki-local-options*
 
@@ -1129,11 +1135,11 @@ nested_syntaxes {}                pairs of highlight keyword and vim filetype
 Description~
 You can make preformatted text to be highlighted with a different syntaxes
 available for vim.
-For example the following setup: >
+For example the following setup in your vimrc: >
   let wiki = {}
-  let wiki.path = '~/my_site/'
+  let wiki.path = '~/my_wiki/'
   let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
-  let vimwiki_list = [wiki]
+  let g:vimwiki_list = [wiki]
 
 would give you python and c++ highlighting in: >
  {{{class="brush: python"
@@ -1202,8 +1208,8 @@ Description~
 Number of maximum dated links placed on one line.
 Ex:
 = Diary =
-|| [[2010-01-30]] || [[2010-01-29]] || [[2010-01-28]] || [[2010-01-27]] ||
-|| [[2010-01-26]] || [[2010-01-25]] ||
+| [[2010-01-30]] | [[2010-01-29]] | [[2010-01-28]] | [[2010-01-27]] |
+| [[2010-01-26]] | [[2010-01-25]] |
 
 
 
@@ -1497,8 +1503,8 @@ ex: >
     1 Header1
     1.1 Header2
     1.2 Header2
-    1.2.1 Header2
-    1.2.2 Header2
+    1.2.1 Header3
+    1.2.2 Header3
     1.3 Header2
     2 Header1
     3 Header1
@@ -1530,15 +1536,24 @@ Default: 0
 *g:vimwiki_html_header_numbering_sym*
 
 Ending symbol for |g:vimwiki_html_header_numbering|. 
-With '.' (dot) headers would look like: >
+
+Value           Description~
+'.'             Dot would be added to the end of header's number.
+')'             Closing bracket would be added to the end of header's number.
+etc.
+
+With 
+    let g:vimwiki_html_header_numbering = '.'
+headers would look like: >
     1. Header1
     1.1. Header2
     1.2. Header2
-    1.2.1. Header2
-    1.2.2. Header2
+    1.2.1. Header3
+    1.2.2. Header3
     1.3. Header2
     2. Header1
     3. Header1
+
 
 Default: '' (empty)
 
@@ -1577,7 +1592,7 @@ Maxim Kim.
 ==============================================================================
 14. Changelog                                              *vimwiki-changelog*
 
-1.0 beta~
+1.0~
     * NEW: Issue 41: Table cell and column text objects. See
       |vimwiki-text-objects|.
     * NEW: Issue 42: Commands to move table columns left and right. See
@@ -1588,6 +1603,8 @@ Maxim Kim.
     * NEW: Issue 46: Do not htmlize some wiki pages (blacklist). New
       placeholder is added: %nohtml. See |vimwiki-nohtml|.
     * FIX: Issue 47: Lists aren't HTMLized properly.
+    * FIX: Issue 48: With autochdir it is impossible to have path_html such as
+      'd:\vimwiki\html\'
     * FIX: Issue 49: Table is not HTMLized properly at the end of wiki page.
     * FIX: Issue 50: Inline formatting is not performed in table cells.
     * FIX: Issue 51: Cannot insert '-' (minus) into table cells of the first
@@ -1612,6 +1629,17 @@ Maxim Kim.
     * FIX: Issue 67: Wrong html conversion of multilined list item with bold
       text on the start of next line.
     * FIX: Issue 68: auto-indent problem with langmap.
+    * FIX: Issue 73: Link navigation by Tab. "Escaped" wiki-word should be
+      skipped for navigation with <tab>.
+    * FIX: Issue 75: `code` syntax doesn't display correctly in toc.
+    * FIX: Issue 77: Diary index only showing link to today's diary entry
+      file for extensions other than '.wiki'.
+    * FIX: Issue 79: Further calendar.vim integration -- add sign to calendar
+      date if it has corresponding diary page.
+    * FIX: Issue 80: Debian Lenny GUI Vim 7.2 has problems with toggling inner
+      todo list items.
+    * FIX: Issue 81: Don't convert WikiWord as a link in html when 
+      `let g:vimwiki_camel_case = 0`
 
 0.9.9~
     * NEW: Diary. Help in making daily notes. See |vimwiki-diary|. Now you can

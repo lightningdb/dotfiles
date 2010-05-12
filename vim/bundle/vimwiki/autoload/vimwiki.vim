@@ -48,7 +48,7 @@ function! vimwiki#subdir(path, filename)"{{{
   let path = expand(a:path)
   let filename = expand(a:filename)
   let idx = 0
-  while path[idx] == filename[idx]
+  while path[idx] ==? filename[idx]
     let idx = idx + 1
   endwhile
 
@@ -171,7 +171,7 @@ endfunction
 " }}}
 
 function! s:is_wiki_word(str) "{{{
-  if a:str =~ g:vimwiki_word1 && a:str !~ '[[:space:]\\/]'
+  if a:str =~ g:vimwiki_rxWikiWord && a:str !~ '[[:space:]\\/]'
     return 1
   endif
   return 0
@@ -388,11 +388,10 @@ function! vimwiki#WikiHighlightLinks() "{{{
   let os_p2 = escape(os_p, '\')
   call map(links, 'substitute(v:val, os_p, os_p2, "g")')
 
-
   for link in links
     if g:vimwiki_camel_case && 
-          \ link =~ g:vimwiki_word1 && !s:is_link_to_non_wiki_file(link)
-      execute 'syntax match VimwikiLink /\%(^\|[^!]\)\@<=\<'.link.'\>/'
+          \ link =~ g:vimwiki_rxWikiWord && !s:is_link_to_non_wiki_file(link)
+      execute 'syntax match VimwikiLink /!\@<!\<'.link.'\>/'
     endif
     execute 'syntax match VimwikiLink /\[\[\<'.
           \ vimwiki#unsafe_link(link).
@@ -465,12 +464,12 @@ endfunction "}}}
 
 " WIKI functions {{{
 function! vimwiki#WikiNextWord() "{{{
-  call s:search_word(g:vimwiki_rxWikiWord.'\|'.g:vimwiki_rxWeblink, '')
+  call s:search_word(g:vimwiki_rxWikiLink.'\|'.g:vimwiki_rxWeblink, '')
 endfunction
 " }}}
 
 function! vimwiki#WikiPrevWord() "{{{
-  call s:search_word(g:vimwiki_rxWikiWord.'\|'.g:vimwiki_rxWeblink, 'b')
+  call s:search_word(g:vimwiki_rxWikiLink.'\|'.g:vimwiki_rxWeblink, 'b')
 endfunction
 " }}}
 
@@ -483,7 +482,7 @@ function! vimwiki#WikiFollowWord(split) "{{{
     let cmd = ":e "
   endif
 
-  let link = s:strip_word(s:get_word_at_cursor(g:vimwiki_rxWikiWord))
+  let link = s:strip_word(s:get_word_at_cursor(g:vimwiki_rxWikiLink))
   if link == ""
     let weblink = s:strip_word(s:get_word_at_cursor(g:vimwiki_rxWeblink))
     if weblink != ""

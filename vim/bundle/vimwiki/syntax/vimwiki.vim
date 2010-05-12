@@ -14,17 +14,18 @@ endif
 if VimwikiGet('maxhi')
   " Every WikiWord is nonexistent
   if g:vimwiki_camel_case
-    execute 'syntax match VimwikiNoExistsLink /\%(^\|[^!]\)\@<='.g:vimwiki_word1.'/'
+    execute 'syntax match VimwikiNoExistsLink /'.g:vimwiki_rxWikiWord.'/'
   endif
-  execute 'syntax match VimwikiNoExistsLink /'.g:vimwiki_word2.'/'
-  execute 'syntax match VimwikiNoExistsLink /'.g:vimwiki_word3.'/'
+  execute 'syntax match VimwikiNoExistsLink /'.g:vimwiki_rxWikiLink1.'/'
+  execute 'syntax match VimwikiNoExistsLink /'.g:vimwiki_rxWikiLink2.'/'
   " till we find them in vimwiki's path
   call vimwiki#WikiHighlightLinks()
 else
   " A WikiWord (unqualifiedWikiName)
-  execute 'syntax match VimwikiLink /\%(^\|[^!]\)\@<=\<'.g:vimwiki_word1.'\>/'
+  execute 'syntax match VimwikiLink /\<'.g:vimwiki_rxWikiWord.'\>/'
   " A [[bracketed wiki word]]
-  execute 'syntax match VimwikiLink /'.g:vimwiki_word2.'/'
+  execute 'syntax match VimwikiLink /'.g:vimwiki_rxWikiLink1.'/'
+  execute 'syntax match VimwikiLink /'.g:vimwiki_rxWikiLink2.'/'
 endif
 
 execute 'syntax match VimwikiLink `'.g:vimwiki_rxWeblink.'`'
@@ -87,7 +88,7 @@ if g:vimwiki_hl_cb_checked
 endif
 
 " placeholders
-syntax match VimwikiPlaceholder /^\s*%toc\s.*$/
+syntax match VimwikiPlaceholder /^\s*%toc\%(\s.*\)\?$/
 syntax match VimwikiPlaceholder /^\s*%nohtml\s*$/
 
 " html tags

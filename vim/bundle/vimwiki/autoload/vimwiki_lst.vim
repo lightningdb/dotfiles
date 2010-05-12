@@ -122,7 +122,7 @@ function! s:get_state(lnum) "{{{
   elseif opt =~ s:rx_li_symbol(25)
     let state = 25
   elseif opt =~ s:rx_li_symbol(50)
-    let state = 50 
+    let state = 50
   elseif opt =~ s:rx_li_symbol(75)
     let state = 75
   endif
@@ -238,9 +238,9 @@ function! s:all_siblings_checked(lnum) "{{{
   let cnt = 0
   let siblings = s:get_sibling_items(a:lnum)
   for lnum in siblings
-    let cnt += s:get_state(lnum)/100.0
+    let cnt += s:get_state(lnum)
   endfor
-  let result = (cnt*100.0)/len(siblings)
+  let result = cnt/len(siblings)
   return result
 endfunction "}}}
 
