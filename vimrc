@@ -37,6 +37,9 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=1
 
+" set to use 'par' for formatting
+set formatprg=par\ -w72qrg
+
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
@@ -142,3 +145,5 @@ com! DiffSaved call s:DiffWithSaved()
 
 " vimwiki options
 let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
+
+let g:snippets_dir='~/home/vim/bundle/snipmate-snippets'
