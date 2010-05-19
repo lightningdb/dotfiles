@@ -141,4 +141,5 @@ endfunction
 com! DiffSaved call s:DiffWithSaved()
 
 " vimwiki options
-let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
+let g:vimwiki_list = [{ 'path': '~/vimwikiwork/', 'ext': '.txt' },
+                      \ { 'path': '~/vimwikipersonal/', 'ext': '.txt' }]
