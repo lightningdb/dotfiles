@@ -146,5 +146,4 @@ com! DiffSaved call s:DiffWithSaved()
 let g:snippets_dir='~/home/vim/bundle/snipmate-snippets'
 
 " vimwiki options
-let g:vimwiki_list = [{ 'path': '~/vimwikiwork/', 'ext': '.txt' },
-                      \ { 'path': '~/vimwikipersonal/', 'ext': '.txt' }]
+let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
