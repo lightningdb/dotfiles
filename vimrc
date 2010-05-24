@@ -102,7 +102,9 @@ nnoremap <F5><F5> :set invhls hls?<CR>    " use f5f5 to toggle search hilight
 nnoremap <F4><F4> :set invwrap wrap?<CR>  " use f4f4 to toggle wordwrap
 nnoremap <F2><F2> :vsplit<CR>
 nnoremap <F3><F3> <C-W>w
-map <C-t> <Esc>:%s/[ ^I]*$//<CR>
+map <C-t> <Esc>:%s/[ ^I]*$//<CR>:retab<CR> " remove trailing space and retab
+map <silent> <C-h> ^cw                    " change first word on line
+
 nmap <leader>s :source ~/.vimrc
 nmap <leader>v :e ~/.vimrc
 nnoremap <leader>d :NERDTreeToggle<CR>
@@ -143,7 +145,20 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
-let g:snippets_dir='~/home/vim/bundle/snipmate-snippets'
+let g:snippets_dir='~/home/vim/bundle/snipmate-snippets,~/home/vim/ldb-snippets'
 
 " vimwiki options
 let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
+
+" svn blame
+vmap <Leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR> 
+vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR> 
+vmap <Leader>h :<C-U>!hg blame -fu <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR
+
+" Edit routes
+command! Rroutes :Redit config/routes.rb
+command! RTroutes :RTedit config/routes.rb
+
+" Edit factories
+command! Rblueprints :Redit spec/blueprints.rb
+command! RTblueprints :RTedit spec/blueprints.rb
