@@ -153,7 +153,8 @@ let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
 " svn blame
 vmap <Leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR> 
 vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR> 
-vmap <Leader>h :<C-U>!hg blame -fu <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR
+" svn log
+vmap <Leader>l :<C-U>!svn log <C-R>=expand("%:p") <CR><CR>
 
 " Edit routes
 command! Rroutes :Redit config/routes.rb
