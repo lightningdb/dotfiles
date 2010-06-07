@@ -1,4 +1,7 @@
 #!/usr/bin/ruby
+# Can be used to do a frequency count for used commands
+# usage:
+# cat ~/.zsh_history | ./frequency.rb | sort -rn | head
 
 counts = {}
 STDIN.each_line do |line|
