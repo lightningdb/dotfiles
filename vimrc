@@ -20,9 +20,10 @@ command! -nargs=* -complete=file Ack call Ack(<q-args>)
 map <leader>f :Ack<space>
 
 " Fuzzy Finder Textmate settings
+let g:fuzzy_roots=["app", "config", "db", "features", "lib", "public", "spec", "test", "vendor"]
 let g:fuzzy_matching_limit=200
-let g:fuzzy_ceiling = 10000
-let g:fuzzy_ignore = "tags;*.log;*.jpg;*.gif;*.png;.git/**/*;.svn;.svn/**/*;teamsite/**/*"
+let g:fuzzy_ceiling=10000
+let g:fuzzy_ignore="teamsite;tags;*.log;*.jpg;*.gif;*.png;.git/**/*;.svn;.svn/**/*;"
 
 map <leader>t :FuzzyFinderTextMate<CR>
 map <leader><S-t> :FuzzyFinderTag<CR>
