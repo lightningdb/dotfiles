@@ -55,3 +55,6 @@
 [submodule "vim/bundle/gist-vim"]
 	path = vim/bundle/gist-vim
 	url = http://github.com/mattn/gist-vim.git
+[submodule "vim/fuzzyfinder_textmate"]
+	path = vim/fuzzyfinder_textmate
+	url = http://github.com/sethbc/fuzzyfinder_textmate.git
