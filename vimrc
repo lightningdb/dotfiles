@@ -31,6 +31,10 @@ set foldlevel=1
 " set to use 'par' for formatting
 set formatprg=par\ -w72qrg
 
+" Command-T settings
+let g:CommandTMaxHeight = 15
+set wildignore+=vendor/rails/**,teamsite/**
+
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
