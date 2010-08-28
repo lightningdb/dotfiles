@@ -19,15 +19,6 @@ endfunction
 command! -nargs=* -complete=file Ack call Ack(<q-args>)
 map <leader>f :Ack<space>
 
-" Fuzzy Finder Textmate settings
-"let g:fuzzy_matching_limit=200
-"let g:fuzzy_ceiling = 10000
-"let g:fuzzy_ignore = "tags;*.log;*.jpg;*.gif;*.png;.git/**/*;.svn;.svn/**/*"
-
-"map <leader>t :FuzzyFinderTextMate<CR>
-"map <leader><S-t> :FuzzyFinderTag<CR>
-"map <leader>b :FuzzyFinderBuffer<CR>
-"map <leader>] :FuzzyFinderMruFile<CR>
 map <leader>q :BufO<CR>
 map <leader>r :Rake<CR>
 
@@ -153,7 +144,8 @@ let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
 " svn blame
 vmap <Leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR> 
 vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR> 
-vmap <Leader>h :<C-U>!hg blame -fu <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR
+" svn log
+vmap <Leader>l :<C-U>!svn log <C-R>=expand("%:p") <CR><CR>
 
 " Edit routes
 command! Rroutes :Redit config/routes.rb
