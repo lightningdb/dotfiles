@@ -6,17 +6,17 @@ let mapleader = ","
 set t_Co=256
 colorscheme railscasts
 
-set grepprg=ack\ -H\ --nocolor\ --nogroup
-set grepformat=%f:%l:%m
+"set grepprg=ack\ -H\ --nocolor\ --nogroup
+"set grepformat=%f:%l:%m
 
-function! Ack(args)
-  let grepprg_bak=&grepprg
-  set grepprg=ack\ -H\ --nocolor\ --nogroup
-  execute "silent! grep " . a:args
-  botright copen
-  let &grepprg=grepprg_bak
-endfunction
-command! -nargs=* -complete=file Ack call Ack(<q-args>)
+"function! Ack(args)
+  "let grepprg_bak=&grepprg
+  "set grepprg=ack\ -H\ --nocolor\ --nogroup
+  "execute "silent! grep " . a:args
+  "botright copen
+  "let &grepprg=grepprg_bak
+"endfunction
+"command! -nargs=* -complete=file Ack call Ack(<q-args>)
 map <leader>f :Ack<space>
 
 map <leader>q :BufO<CR>
