@@ -6,19 +6,7 @@ let mapleader = ","
 set t_Co=256
 colorscheme railscasts
 
-"set grepprg=ack\ -H\ --nocolor\ --nogroup
-"set grepformat=%f:%l:%m
-
-"function! Ack(args)
-  "let grepprg_bak=&grepprg
-  "set grepprg=ack\ -H\ --nocolor\ --nogroup
-  "execute "silent! grep " . a:args
-  "botright copen
-  "let &grepprg=grepprg_bak
-"endfunction
-"command! -nargs=* -complete=file Ack call Ack(<q-args>)
 map <leader>f :Ack<space>
-
 map <leader>q :BufO<CR>
 map <leader>r :Rake<CR>
 
@@ -158,3 +146,9 @@ command! RTroutes :RTedit config/routes.rb
 " Edit factories
 command! Rblueprints :Redit spec/blueprints.rb
 command! RTblueprints :RTedit spec/blueprints.rb
+
+" ZoomWin configuration
+map <Leader>z :ZoomWin<CR>
+
+" CTags
+map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
