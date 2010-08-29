@@ -52,9 +52,18 @@
 [submodule "vim-pathogen"]
 	path = vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git
 [submodule "vim/bundle/gist-vim"]
 	path = vim/bundle/gist-vim
 	url = http://github.com/mattn/gist-vim.git
-[submodule "vim/fuzzyfinder_textmate"]
-	path = vim/fuzzyfinder_textmate
-	url = http://github.com/sethbc/fuzzyfinder_textmate.git
+[submodule "vim/bundle/ack.vim"]
+	path = vim/bundle/ack.vim
+	url = http://github.com/mileszs/ack.vim.git
+[submodule "vim/bundle/vim-rspec"]
+	path = vim/bundle/vim-rspec
+	url = http://github.com/taq/vim-rspec.git
+[submodule "vim/bundle/vim-autoclose"]
+	path = vim/bundle/vim-autoclose
+	url = http://github.com/Townk/vim-autoclose.git
