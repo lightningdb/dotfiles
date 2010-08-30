@@ -152,3 +152,6 @@ map <Leader>z :ZoomWin<CR>
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+
+" Toggle off whitespace highlighting
+map <Leader>w :set list!<CR>
