@@ -6,10 +6,6 @@ let mapleader = ","
 set t_Co=256
 colorscheme railscasts
 
-map <leader>f :Ack<space>
-map <leader>q :BufO<CR>
-map <leader>r :Rake<CR>
-
 " folding settings
 set foldmethod=indent
 set foldnestmax=10
@@ -75,23 +71,45 @@ set shiftwidth=2
 " turn mouse on
 set mouse=a
 
+" #########################
+" BINDINGS
+" #########################
+map <leader>f :Ack<space>
+map <leader>q :BufO<CR>
+map <leader>r :Rake<CR>
+
 " space = pagedown, - = pageup
 noremap <Space> <PageDown>
 noremap - <PageUp>
 
-" remap'd keys
-"map <Tab><Tab> <C-W>w
-nnoremap <F5><F5> :set invhls hls?<CR>    " use f5f5 to toggle search hilight
-nnoremap <F4><F4> :set invwrap wrap?<CR>  " use f4f4 to toggle wordwrap
 nnoremap <F2><F2> :vsplit<CR>
 nnoremap <F3><F3> <C-W>w
+nnoremap <F4><F4> :set invwrap wrap?<CR>  " use f4f4 to toggle wordwrap
+nnoremap <F5><F5> :set invhls hls?<CR>    " use f5f5 to toggle search hilight
+nnoremap <F6><F6> :TlistToggle<CR>
+
 map <C-t> <Esc>:%s/[ ^I]*$//<CR>:retab<CR> " remove trailing space and retab
-map <silent> <C-h> ^cw                    " change first word on line
 
 nmap <leader>s :source ~/.vimrc
 nmap <leader>v :e ~/.vimrc
 nnoremap <leader>d :NERDTreeToggle<CR>
-nnoremap <F6><F6> :TlistToggle<CR>
+
+" ZoomWin configuration
+map <Leader>z :ZoomWin<CR>
+
+" CTags
+map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+
+" Flush Command T (rescans directories)
+map <Leader>tf :CommandTFlush<CR>
+map <Leader>t :CommandT<CR>
+
+" Toggle off whitespace highlighting
+map <Leader>w :set list!<CR>
+
+" #########################
+" END BINDINGS
+" #########################
 
 " backup to ~/.tmp
 "set backup
@@ -146,15 +164,3 @@ command! RTroutes :RTedit config/routes.rb
 " Edit factories
 command! Rblueprints :Redit spec/blueprints.rb
 command! RTblueprints :RTedit spec/blueprints.rb
-
-" ZoomWin configuration
-map <Leader>z :ZoomWin<CR>
-
-" CTags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
-
-" Flush Command T (rescans directories)
-map <Leader>tf :CommandTFlush<CR>
-
-" Toggle off whitespace highlighting
-map <Leader>w :set list!<CR>
