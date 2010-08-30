@@ -3,7 +3,7 @@ colorscheme ir_black
 if has("gui_gtk2")
   set guifont=DejaVu\ Sans\ Mono\ 9
 elseif has("gui_macvim")
-  set guifont=Inconsolata:h10
+  set guifont=Menlo:h11
 end
 
 syntax on
