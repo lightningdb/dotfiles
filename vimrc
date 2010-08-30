@@ -153,5 +153,8 @@ map <Leader>z :ZoomWin<CR>
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 
+" Flush Command T (rescans directories)
+map <Leader>tf :CommandTFlush<CR>
+
 " Toggle off whitespace highlighting
 map <Leader>w :set list!<CR>
