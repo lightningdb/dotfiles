@@ -129,6 +129,7 @@ let html_use_css=1
 filetype off
 " following line is needed for vim-pathogen to be a submodule too
 set runtimepath+=~/home/vim-pathogen
+call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 " following line is for ervandew's plugins (including supertab etc)
 set rtp+=~/home/ervandew-vimfiles/vim
