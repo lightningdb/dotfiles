@@ -29,6 +29,7 @@ let g:rails_default_file='config/database.yml'
 
 syntax on
 
+set hidden
 set wildmenu
 set autoread
 set nobackup
@@ -77,6 +78,13 @@ set mouse=a
 map <leader>f :Ack<space>
 map <leader>q :BufO<CR>
 map <leader>r :Rake<CR>
+
+" A function to search for word under cursor
+function! SearchWord()
+   normal "zyiw
+   exe ':Ack '.@z
+endfunction
+map <leader>F :call SearchWord()<CR>
 
 " space = pagedown, - = pageup
 noremap <Space> <PageDown>

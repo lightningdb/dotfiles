@@ -1,4 +1,4 @@
-colorscheme ir_black
+colorscheme jellybeans
 
 if has("gui_gtk2")
   set guifont=DejaVu\ Sans\ Mono\ 9

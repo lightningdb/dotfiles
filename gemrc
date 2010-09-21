@@ -1,11 +1,12 @@
 --- 
 :update_sources: true
+gem: --no-ri --no-rdoc
+:verbose: true
+:backtrace: false
+rdoc: --inline-source --line-numbers --template=hanna
 :sources: 
 - http://gems.rubyforge.org/
 - http://gems.github.com
+- http://gems.dbg.westfield.com/
 :bulk_threshold: 1000
-:verbose: true
-:backtrace: false
 :benchmark: false
-rdoc: --inline-source --line-numbers --template=hanna
-gem: --no-ri --no-rdoc
