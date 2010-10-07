@@ -73,3 +73,6 @@
 [submodule "vim/bundle/sparkup"]
 	path = vim/bundle/sparkup
 	url = http://github.com/sophacles/vim-bundle-sparkup.git
+[submodule "vim/bundle/rvm"]
+	path = vim/bundle/rvm
+	url = http://github.com/csexton/rvm.vim.git
