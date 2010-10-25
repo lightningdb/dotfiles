@@ -10,7 +10,7 @@ hardstatus alwayslastline
 hardstatus string '%{= kK}%{w}%H %{K}%= %{= kw}%?%-Lw%?%{B}(%{W}%n*%f %t%?(%u)%?%{B})%{w}%?%+Lw%?%?%= %{K}%{B} %{w}%c%{K}'
 
 # default screens
-screen -t shell1    1
+screen -t shell1    0
 
 escape ^Zz
 
