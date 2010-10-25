@@ -10,7 +10,6 @@ hardstatus alwayslastline
 hardstatus string '%{= kK}%{w}%H %{K}%= %{= kw}%?%-Lw%?%{B}(%{W}%n*%f %t%?(%u)%?%{B})%{w}%?%+Lw%?%?%= %{K}%{B} %{w}%c%{K}'
 
 # default screens
-screen -t irssi     0 irssi -c 10.32.24.134
 screen -t shell1    1
 
 escape ^Zz
