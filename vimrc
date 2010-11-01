@@ -109,7 +109,7 @@ nnoremap <leader>d :NERDTreeToggle<CR>
 map <Leader>z :ZoomWin<CR>
 
 " CTags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+map <Leader>rt :!ctags --extra=+f --exclude=teamsite --exclude=public -R *<CR><CR>
 
 " Flush Command T (rescans directories)
 map <Leader>tf :CommandTFlush<CR>
@@ -163,13 +163,6 @@ let g:snippets_dir='~/home/vim/bundle/snipmate-snippets,~/home/vim/ldb-snippets'
 " vimwiki options
 let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
 
-" svn blame
-vmap <Leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR> 
-vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR> 
-" svn log
-vmap <Leader>l :<C-U>!svn log <C-R>=expand("%:p") <CR><CR>
-
-" Edit routes
 command! Rroutes :Redit config/routes.rb
 command! RTroutes :RTedit config/routes.rb
 
