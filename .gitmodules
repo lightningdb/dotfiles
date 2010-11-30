@@ -76,3 +76,9 @@
 [submodule "vim/bundle/rvm"]
 	path = vim/bundle/rvm
 	url = http://github.com/csexton/rvm.vim.git
+[submodule "vim/bundle/vimtodo"]
+	path = vim/bundle/vimtodo
+	url = http://github.com/mivok/vimtodo.git
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = git://github.com/pangloss/vim-javascript.git
