@@ -870,6 +870,7 @@ function! <SID>FindCreateWindow(bufName, forceEdge, isExplorer, doDebug)
       setlocal noswapfile
       setlocal buftype=nofile
       setlocal bufhidden=delete
+      setlocal winfixheight
       if g:miniBufExplVSplit == 0
         setlocal wrap
       else
