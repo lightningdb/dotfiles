@@ -105,6 +105,10 @@ nmap <leader>s :source ~/.vimrc
 nmap <leader>v :e ~/.vimrc
 nnoremap <leader>d :NERDTreeToggle<CR>
 
+nmap <S-H> :BufSurfBack<CR>
+nmap <S-L> :BufSurfForward<CR>
+
+
 " ZoomWin configuration
 map <Leader>z :ZoomWin<CR>
 
@@ -178,4 +182,5 @@ if exists(":Tabularize")
   nmap <Leader>a| :Tabularize /|<CR>
   vmap <Leader>a| :Tabularize /|<CR>
 endif
+
 
