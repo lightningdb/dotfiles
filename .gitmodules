@@ -94,3 +94,6 @@
 [submodule "vim/bundle/vim-bufsurf"]
 	path = vim/bundle/vim-bufsurf
 	url = https://github.com/ton/vim-bufsurf.git
+[submodule "vim/bundle/minibufexpl"]
+	path = vim/bundle/minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim.git
