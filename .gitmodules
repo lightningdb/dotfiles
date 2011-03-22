@@ -103,3 +103,6 @@
 [submodule "vim/bundle/gundo"]
 	path = vim/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
+[submodule "vim/bundle/vim-flog"]
+	path = vim/bundle/vim-flog
+	url = https://github.com/fousa/vim-flog.git
