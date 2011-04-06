@@ -109,7 +109,6 @@ nnoremap <leader>d :NERDTreeToggle<CR>
 nmap <S-H> :BufSurfBack<CR>
 nmap <S-L> :BufSurfForward<CR>
 
-
 " ZoomWin configuration
 map <Leader>z :ZoomWin<CR>
 
@@ -185,3 +184,4 @@ if exists(":Tabularize")
 endif
 
 :silent exe "g:flog_enable"
+:set list!
