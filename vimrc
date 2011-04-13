@@ -146,7 +146,7 @@ filetype off
 set runtimepath+=~/home/vim-pathogen
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
-" following line is for ervandew's plugins (including supertab etc)
+" following line is for ervandew's plugins
 set rtp+=~/home/ervandew-vimfiles/vim
 
 filetype on           " Enable filetype detection
@@ -183,5 +183,9 @@ if exists(":Tabularize")
   vmap <Leader>a| :Tabularize /|<CR>
 endif
 
-:silent exe "g:flog_enable"
 :set list!
+
+" Without setting this, ZoomWin restores windows in a way that causes
+" equalalways behavior to be triggered the next time CommandT is used.
+" This is likely a bludgeon to solve some other issue, but it works
+set noequalalways
