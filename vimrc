@@ -95,6 +95,7 @@ nnoremap <F3><F3> <C-W>w
 nnoremap <F4><F4> :set invwrap wrap?<CR>  " use f4f4 to toggle wordwrap
 nnoremap <F5><F5> :set invhls hls?<CR>    " use f5f5 to toggle search hilight
 nnoremap <F6><F6> :TlistToggle<CR>
+nnoremap <F7><F7> :GundoToggle<CR>
 " Yankring Show
 nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
@@ -107,7 +108,6 @@ nnoremap <leader>d :NERDTreeToggle<CR>
 
 nmap <S-H> :BufSurfBack<CR>
 nmap <S-L> :BufSurfForward<CR>
-
 
 " ZoomWin configuration
 map <Leader>z :ZoomWin<CR>
@@ -183,4 +183,5 @@ if exists(":Tabularize")
   vmap <Leader>a| :Tabularize /|<CR>
 endif
 
-
+:silent exe "g:flog_enable"
+:set list!

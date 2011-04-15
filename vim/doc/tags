@@ -44,6 +44,7 @@ Tlist_Get_Tagname_By_Line()	taglist.txt	/*Tlist_Get_Tagname_By_Line()*
 Tlist_Set_App()	taglist.txt	/*Tlist_Set_App()*
 Tlist_Update_File_Tags()	taglist.txt	/*Tlist_Update_File_Tags()*
 ZoomWin.txt	ZoomWin.txt	/*ZoomWin.txt*
+g:ZoomWin_funcref	ZoomWin.txt	/*g:ZoomWin_funcref*
 taglist-commands	taglist.txt	/*taglist-commands*
 taglist-debug	taglist.txt	/*taglist-debug*
 taglist-extend	taglist.txt	/*taglist-extend*
@@ -64,5 +65,6 @@ taglist.txt	taglist.txt	/*taglist.txt*
 zoomwin	ZoomWin.txt	/*zoomwin*
 zoomwin-copyright	ZoomWin.txt	/*zoomwin-copyright*
 zoomwin-history	ZoomWin.txt	/*zoomwin-history*
+zoomwin-options	ZoomWin.txt	/*zoomwin-options*
 zoomwin-setup	ZoomWin.txt	/*zoomwin-setup*
 zoomwin-usage	ZoomWin.txt	/*zoomwin-usage*
