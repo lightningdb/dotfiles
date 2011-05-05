@@ -4,7 +4,6 @@ set magic
 let mapleader = ","
 
 set t_Co=256
-colorscheme railscasts
 
 " folding settings
 set foldmethod=indent
@@ -189,3 +188,6 @@ endif
 " equalalways behavior to be triggered the next time CommandT is used.
 " This is likely a bludgeon to solve some other issue, but it works
 set noequalalways
+
+set background=dark
+colorscheme solarized

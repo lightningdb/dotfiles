@@ -1,4 +1,4 @@
-colorscheme jellybeans
+"colorscheme jellybeans
 
 if has("gui_gtk2")
   set guifont=Inconsolata\ Medium\ 12
