@@ -115,3 +115,24 @@
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized
+[submodule "vim/bundle/bufonly.vim"]
+	path = vim/bundle/bufonly.vim
+	url = https://github.com/vim-scripts/BufOnly.vim.git
+[submodule "vim/bundle/ZoomWin"]
+	path = vim/bundle/ZoomWin
+	url = https://github.com/vim-scripts/ZoomWin.git
+[submodule "vim/bundle/tslime"]
+	path = vim/bundle/tslime
+	url = https://github.com/vim-scripts/tslime.vim.git
+[submodule "vim/bundle/taglist"]
+	path = vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "vim/bundle/multvals"]
+	path = vim/bundle/multvals
+	url = https://github.com/vim-scripts/multvals.vim.git
+[submodule "vim/bundle/increment"]
+	path = vim/bundle/increment
+	url = https://github.com/vim-scripts/increment.vim.git
+[submodule "vim/bundle/genutils"]
+	path = vim/bundle/genutils
+	url = https://github.com/vim-scripts/genutils.git
