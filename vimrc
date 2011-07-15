@@ -57,6 +57,7 @@ let g:proj_flags='imst'
 set guioptions-=T
 
 set term=xterm-256color
+
 " os x backspace fix
 set backspace=indent,eol,start
 "set t_kb
@@ -191,3 +192,5 @@ set noequalalways
 
 set background=dark
 colorscheme solarized
+let g:solarized_termcolors=256
+
