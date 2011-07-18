@@ -105,9 +105,6 @@ nnoremap <leader>d :NERDTreeToggle<CR>
 nmap <S-H> :BufSurfBack<CR>
 nmap <S-L> :BufSurfForward<CR>
 
-" ZoomWin configuration
-map <Leader>z :ZoomWin<CR>
-
 " CTags
 map <Leader>rt :!ctags --extra=+f --exclude=teamsite --exclude=public -R *<CR><CR>
 
@@ -128,7 +125,6 @@ map <Leader>w :set list!<CR>
 "set writebackup
 
 " misc
-"set ai
 set nohls
 set incsearch
 set showcmd
@@ -189,4 +185,3 @@ set noequalalways
 set background=dark
 colorscheme solarized
 let g:solarized_termcolors=256
-
