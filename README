@@ -1,0 +1,6 @@
+This repo has my most important dotfiles.
+
+It needs some work for the .vim files to be truly cross platform (for OS X and linux)
+
+To update all the vim bundles (managed using pathogen), run (in the .gitmodule directory):
+$  git submodule foreach git pull origin master
