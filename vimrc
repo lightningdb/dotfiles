@@ -23,8 +23,6 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
-" Change which file opens after executing :Rails command
-let g:rails_default_file='config/database.yml'
 
 syntax on
 
@@ -52,8 +50,7 @@ set laststatus=2  " Always show status line.
 
 " don't use folder browser when adding to project listings
 let g:proj_flags='imst'
-" no menu, and no toolbar:
-"set guioptions-=m
+" no toolbar:
 set guioptions-=T
 
 set term=xterm-256color
@@ -77,7 +74,6 @@ set mouse=a
 " #########################
 map <leader>f :Ack<space>
 map <leader>q :BufO<CR>
-map <leader>r :Rake<CR>
 
 " A function to search for word under cursor
 function! SearchWord()
