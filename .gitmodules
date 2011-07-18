@@ -121,9 +121,6 @@
 [submodule "vim/bundle/bufonly.vim"]
 	path = vim/bundle/bufonly.vim
 	url = https://github.com/vim-scripts/BufOnly.vim.git
-[submodule "vim/bundle/ZoomWin"]
-	path = vim/bundle/ZoomWin
-	url = https://github.com/vim-scripts/ZoomWin.git
 [submodule "vim/bundle/tslime"]
 	path = vim/bundle/tslime
 	url = https://github.com/vim-scripts/tslime.vim.git
