@@ -34,13 +34,13 @@ set nowritebackup
 set smartindent
 set gdefault
 set cursorline
-set nu  " Line numbers on
-set nowrap  " Line wrapping off
+set nu     " Line numbers on
+set nowrap " Line wrapping off
 set directory=/tmp
 
 " Visual
-set showmatch  " Show matching brackets.
-set mat=5  " Bracket blinking.
+set showmatch " Show matching brackets.
+set mat=5     " Bracket blinking.
 set list
 " Show $ at end of line and trailing space as ~
 set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
@@ -48,8 +48,6 @@ set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
 
-" don't use folder browser when adding to project listings
-let g:proj_flags='imst'
 " no toolbar:
 set guioptions-=T
 
@@ -119,11 +117,6 @@ map <Leader>w :set list!<CR>
 " END BINDINGS
 " #########################
 
-" backup to ~/.tmp
-"set backup
-"set backupdir=$HOME/.tmp
-"set writebackup
-
 " misc
 set nohls
 set incsearch
@@ -160,11 +153,7 @@ let g:snippets_dir='~/home/vim/bundle/snipmate-snippets,~/home/vim/ldb-snippets'
 let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
 
 command! Rroutes :Redit config/routes.rb
-command! RTroutes :RTedit config/routes.rb
-
-" Edit factories
 command! Rblueprints :Redit spec/blueprints.rb
-command! RTblueprints :RTedit spec/blueprints.rb
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
@@ -176,11 +165,6 @@ if exists(":Tabularize")
 endif
 
 :set list!
-
-" Without setting this, ZoomWin restores windows in a way that causes
-" equalalways behavior to be triggered the next time CommandT is used.
-" This is likely a bludgeon to solve some other issue, but it works
-set noequalalways
 
 set background=dark
 colorscheme solarized
