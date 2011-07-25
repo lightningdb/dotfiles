@@ -18,12 +18,6 @@ set formatprg=par\ -w72qrg
 let g:CommandTMaxHeight = 15
 set wildignore+=vendor/rails/**,teamsite/**
 
-" Minibuffer Explorer Settings
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-
 syntax on
 
 set hidden
@@ -48,6 +42,9 @@ set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
 
+let g:surround_{char2nr('-')} = "<% \r %>"
+let g:surround_{char2nr('=')} = "<%= \r %>"
+
 " no toolbar:
 set guioptions-=T
 
@@ -70,6 +67,11 @@ set mouse=a
 " #########################
 " BINDINGS
 " #########################
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
 map <leader>f :Ack<space>
 map <leader>q :BufO<CR>
 
@@ -85,11 +87,8 @@ noremap <Space> <PageDown>
 noremap - <PageUp>
 
 nnoremap <F2><F2> :vsplit<CR>
-nnoremap <F3><F3> <C-W>w
 nnoremap <F4><F4> :set invwrap wrap?<CR>  " use f4f4 to toggle wordwrap
 nnoremap <F5><F5> :set invhls hls?<CR>    " use f5f5 to toggle search hilight
-nnoremap <F6><F6> :TlistToggle<CR>
-nnoremap <F7><F7> :GundoToggle<CR>
 " Yankring Show
 nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
@@ -98,6 +97,7 @@ map <C-t> <Esc>:%s/[ ^I]*$//<CR>:retab<CR> " remove trailing space and retab
 
 nmap <leader>s :source ~/.vimrc
 nmap <leader>v :e ~/.vimrc
+
 nnoremap <leader>d :NERDTreeToggle<CR>
 
 nmap <S-H> :BufSurfBack<CR>
