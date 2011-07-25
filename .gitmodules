@@ -109,9 +109,6 @@
 [submodule "vim/bundle/tslime"]
 	path = vim/bundle/tslime
 	url = https://github.com/vim-scripts/tslime.vim.git
-[submodule "vim/bundle/taglist"]
-	path = vim/bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim.git
 [submodule "vim/bundle/multvals"]
 	path = vim/bundle/multvals
 	url = https://github.com/vim-scripts/multvals.vim.git
