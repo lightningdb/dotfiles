@@ -1,4 +1,5 @@
 #!/bin/zsh
+ln -s ~/home/ackrc ~/.ackrc
 ln -s ~/home/vimrc ~/.vimrc
 ln -s ~/home/gvimrc ~/.gvimrc
 ln -s ~/home/rdebugrc ~/.rdebugrc
