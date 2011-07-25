@@ -40,9 +40,6 @@
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/vim-scratch"]
-	path = vim/bundle/vim-scratch
-	url = http://github.com/kana/vim-scratch.git
 [submodule "ervandew-vimfiles"]
 	path = ervandew-vimfiles
 	url = http://github.com/ervandew/vimfiles.git
