@@ -121,9 +121,6 @@
 [submodule "vim/bundle/multvals"]
 	path = vim/bundle/multvals
 	url = https://github.com/vim-scripts/multvals.vim.git
-[submodule "vim/bundle/increment"]
-	path = vim/bundle/increment
-	url = https://github.com/vim-scripts/increment.vim.git
 [submodule "vim/bundle/genutils"]
 	path = vim/bundle/genutils
 	url = https://github.com/vim-scripts/genutils.git
