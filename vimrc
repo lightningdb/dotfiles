@@ -64,17 +64,21 @@ set shiftwidth=2
 " turn mouse on
 set mouse=a
 
+" %% expands to the current directory
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
 " #########################
 " BINDINGS
 " #########################
+nnoremap <leader><leader> <c-^>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-map <leader>f :Ack<space>
 map <leader>q :BufO<CR>
 
+map <leader>f :Ack<space>
 " A function to search for word under cursor
 function! SearchWord()
    normal "zyiw
@@ -95,8 +99,8 @@ inoremap <silent> <F3> <ESC>:YRShow<cr>
 
 map <C-t> <Esc>:%s/[ ^I]*$//<CR>:retab<CR> " remove trailing space and retab
 
-nmap <leader>s :source ~/.vimrc
-nmap <leader>v :e ~/.vimrc
+nmap <leader>s :source ~/.vimrc<CR>
+nmap <leader>v :e ~/.vimrc<CR>
 
 nnoremap <leader>d :NERDTreeToggle<CR>
 
@@ -122,6 +126,16 @@ set nohls
 set incsearch
 set showcmd
 set nowrap
+
+" #### From DestroyAllSoftware screencast on file navigation in vim
+set winwidth=84 " always have enough width to view file
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+"set winheight=5
+"set winminheight=5
+"set winheight=999
+" ####
 
 let html_use_css=1
 
@@ -156,16 +170,59 @@ command! Rroutes :Redit config/routes.rb
 command! Rblueprints :Redit spec/blueprints.rb
 
 if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-  nmap <Leader>a| :Tabularize /|<CR>
-  vmap <Leader>a| :Tabularize /|<CR>
+  nmap <Leader>a\= :Tabularize /=<CR>
+  vmap <Leader>a\= :Tabularize /=<CR>
+  nmap <Leader>a\: :Tabularize /:\zs<CR>
+  vmap <Leader>a\: :Tabularize /:\zs<CR>
+  nmap <Leader>a\| :Tabularize /\|<CR>
+  vmap <Leader>a\| :Tabularize /\|<CR>
 endif
 
-:set list!
+set list!
 
 set background=dark
 colorscheme solarized
 let g:solarized_termcolors=256
+
+
+" #### From DestroyAllSoftware screencast on file navigation in vim
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo
+    exec ":!bundle exec spec " . a:filename
+endfunction
+
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
+
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_spec_file = match(expand("%"), '_spec.rb$') != -1
+    if in_spec_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number)
+endfunction
+
+" Run this file
+map <leader>r :call RunTestFile()<cr>
+" Run only the example under the cursor
+map <leader>R :call RunNearestTest()<cr>
+" Run all test files
+map <leader>a :call RunTests('spec')<cr>
