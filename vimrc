@@ -1,24 +1,12 @@
 set nocompatible
 set magic
+syntax on
 
 let mapleader = ","
 
-set t_Co=256
-
-" folding settings
-set foldmethod=indent
-set foldnestmax=10
-set nofoldenable
-set foldlevel=1
-
-" set to use 'par' for formatting
-set formatprg=par\ -w72qrg
-
-" Command-T settings
-let g:CommandTMaxHeight = 15
-set wildignore+=vendor/rails/**,teamsite/**
-
-syntax on
+set nohls
+set incsearch
+set showcmd
 
 set hidden
 set wildmenu
@@ -32,18 +20,26 @@ set nu     " Line numbers on
 set nowrap " Line wrapping off
 set directory=/tmp
 
+" need both of these for vim to startup with whitespace and line-endings
+" switched off
+set list
+:set list!
+
+" set to use 'par' for formatting
+set formatprg=par\ -w72qrg
+
+" Command-T settings
+let g:CommandTMaxHeight = 15
+set wildignore+=vendor/rails/**,teamsite/**
+
 " Visual
 set showmatch " Show matching brackets.
 set mat=5     " Bracket blinking.
-set list
 " Show $ at end of line and trailing space as ~
 set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
 set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
-
-let g:surround_{char2nr('-')} = "<% \r %>"
-let g:surround_{char2nr('=')} = "<%= \r %>"
 
 " no toolbar:
 set guioptions-=T
@@ -66,6 +62,9 @@ set mouse=a
 
 " %% expands to the current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+let g:surround_{char2nr('-')} = "<% \r %>"
+let g:surround_{char2nr('=')} = "<%= \r %>"
 
 " #########################
 " BINDINGS
@@ -121,12 +120,6 @@ map <Leader>w :set list!<CR>
 " END BINDINGS
 " #########################
 
-" misc
-set nohls
-set incsearch
-set showcmd
-set nowrap
-
 " #### From DestroyAllSoftware screencast on file navigation in vim
 set winwidth=84 " always have enough width to view file
 " We have to have a winheight bigger than we want to set winminheight. But if
@@ -139,10 +132,8 @@ set winwidth=84 " always have enough width to view file
 
 let html_use_css=1
 
-" set up pathogen to allow plugin bundling
-filetype off
-" following line is needed for vim-pathogen to be a submodule too
-set runtimepath+=~/home/vim-pathogen
+filetype off " set up pathogen to allow plugin bundling
+set runtimepath+=~/home/vim-pathogen " for vim-pathogen to be a submodule too
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 " following line is for ervandew's plugins
@@ -177,13 +168,6 @@ if exists(":Tabularize")
   nmap <Leader>a\| :Tabularize /\|<CR>
   vmap <Leader>a\| :Tabularize /\|<CR>
 endif
-
-set list!
-
-set background=dark
-colorscheme solarized
-let g:solarized_termcolors=256
-
 
 " #### From DestroyAllSoftware screencast on file navigation in vim
 function! RunTests(filename)
@@ -226,3 +210,9 @@ map <leader>r :call RunTestFile()<cr>
 map <leader>R :call RunNearestTest()<cr>
 " Run all test files
 map <leader>a :call RunTests('spec')<cr>
+
+set t_Co=256
+colorscheme solarized
+let g:solarized_termcolors=256
+set background=light
+

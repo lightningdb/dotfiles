@@ -5,6 +5,8 @@ elseif has("gui_macvim")
   set guifont=Menlo:h11
 end
 
+set background=dark
+
 syntax on
 
 " gvim specific
