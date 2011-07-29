@@ -3,7 +3,7 @@
 if has("gui_gtk2")
   set guifont=Inconsolata\ Medium\ 12
 elseif has("gui_macvim")
-  set guifont=Menlo:h11
+  set guifont=Menlo:h15
 end
 
 syntax on
