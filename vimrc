@@ -41,10 +41,9 @@ set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
 
-" no toolbar:
+" no toolbar, no menu
 set guioptions-=T
-
-set term=xterm-256color
+set guioptions-=m
 
 " os x backspace fix
 set backspace=indent,eol,start
@@ -136,8 +135,6 @@ filetype off " set up pathogen to allow plugin bundling
 set runtimepath+=~/home/vim-pathogen " for vim-pathogen to be a submodule too
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
-" following line is for ervandew's plugins
-set rtp+=~/home/ervandew-vimfiles/vim
 
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
@@ -179,7 +176,7 @@ endfunction
 
 function! SetTestFile()
     " Set the spec file that tests will be run for.
-    let t:grb_test_file=@%
+    let t:ldb_test_file=@%
 endfunction
 
 function! RunTestFile(...)
@@ -193,10 +190,10 @@ function! RunTestFile(...)
     let in_spec_file = match(expand("%"), '_spec.rb$') != -1
     if in_spec_file
         call SetTestFile()
-    elseif !exists("t:grb_test_file")
+    elseif !exists("t:ldb_test_file")
         return
     end
-    call RunTests(t:grb_test_file . command_suffix)
+    call RunTests(t:ldb_test_file . command_suffix)
 endfunction
 
 function! RunNearestTest()
@@ -213,6 +210,5 @@ map <leader>a :call RunTests('spec')<cr>
 
 set t_Co=256
 colorscheme solarized
-let g:solarized_termcolors=256
 set background=light
 

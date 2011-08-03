@@ -12,6 +12,7 @@
 data.location=~/.task
 locking=on                                    # Use file-level locking
 
+
 # Terminal
 curses=on                                     # Use ncurses library to determine terminal width
 defaultwidth=80                               # Without ncurses, assumed width
@@ -261,3 +262,5 @@ report.next.filter=status:pending limit:page
 #report.next.dateformat=m/d/Y
 #report.next.annotations=full
 
+include ~/home/solarized-task/solarized-dark-256.theme
+#include ~/home/solarized-task/solarized-light-256.theme
