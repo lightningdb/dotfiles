@@ -91,6 +91,7 @@ noremap - <PageUp>
 nnoremap <F2><F2> :vsplit<CR>
 nnoremap <F4><F4> :set invwrap wrap?<CR>  " use f4f4 to toggle wordwrap
 nnoremap <F5><F5> :set invhls hls?<CR>    " use f5f5 to toggle search hilight
+
 " Yankring Show
 nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
@@ -211,4 +212,6 @@ map <leader>a :call RunTests('spec')<cr>
 set t_Co=256
 colorscheme solarized
 set background=light
+" toggle the background for solarized light or dark
+call togglebg#map("<F5>") 
 
