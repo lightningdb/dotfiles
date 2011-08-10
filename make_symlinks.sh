@@ -4,6 +4,7 @@ ln -s ~/home/vimrc ~/.vimrc
 ln -s ~/home/gvimrc ~/.gvimrc
 ln -s ~/home/vim ~/.vim
 ln -s ~/home/rdebugrc ~/.rdebugrc
+ln -s ~/home/riplrc ~/.riplrc
 ln -s ~/home/tmux.conf ~/.tmux.conf
 ln -s ~/home/taskrc ~/.taskrc
 ln -s ~/Dropbox/.task ~/.task

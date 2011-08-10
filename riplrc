@@ -1,0 +1,7 @@
+require 'ripl/multi_line'
+require 'ripl/irb'
+require 'ripl/auto_indent'
+require 'ripl/color_result'
+Ripl.config[:color_result_engine] = :coderay
+require 'hirb'
+require 'interactive_editor'
