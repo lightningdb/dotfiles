@@ -77,7 +77,7 @@ nnoremap <c-l> <c-w>l
 map <leader>q :BufO<CR>
 
 map <leader>f :Ack<space>
-" A function to search for word under cursor
+" A function to search for word under cursor, using Ack plugin
 function! SearchWord()
    normal "zyiw
    exe ':Ack '.@z
