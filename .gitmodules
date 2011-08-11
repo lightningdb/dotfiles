@@ -106,3 +106,6 @@
 [submodule "vim/bundle/genutils"]
 	path = vim/bundle/genutils
 	url = https://github.com/vim-scripts/genutils.git
+[submodule "vim/bundle/vimwiki"]
+	path = vim/bundle/vimwiki
+	url = https://github.com/vim-scripts/vimwiki.git
