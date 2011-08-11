@@ -134,8 +134,7 @@ let html_use_css=1
 
 filetype off " set up pathogen to allow plugin bundling
 set runtimepath+=~/home/vim-pathogen " for vim-pathogen to be a submodule too
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
