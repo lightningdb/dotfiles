@@ -55,12 +55,6 @@
 [submodule "vim/bundle/lusty"]
 	path = vim/bundle/lusty
 	url = http://github.com/sjbach/lusty.git
-[submodule "vim/bundle/sparkup"]
-	path = vim/bundle/sparkup
-	url = http://github.com/sophacles/vim-bundle-sparkup.git
-[submodule "vim/bundle/vimtodo"]
-	path = vim/bundle/vimtodo
-	url = http://github.com/mivok/vimtodo.git
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
 	url = http://github.com/pangloss/vim-javascript.git
@@ -70,9 +64,6 @@
 [submodule "vim/bundle/vim-bufsurf"]
 	path = vim/bundle/vim-bufsurf
 	url = https://github.com/ton/vim-bufsurf.git
-[submodule "vim/bundle/vim-flog"]
-	path = vim/bundle/vim-flog
-	url = https://github.com/fousa/vim-flog.git
 [submodule "vim/bundle/vim-irblack"]
 	path = vim/bundle/vim-irblack
 	url = git@github.com:wgibbs/vim-irblack.git
@@ -102,4 +93,4 @@
 	url = https://github.com/vim-scripts/vimwiki.git
 [submodule "vim/bundle/vim-ruby"]
 	path = vim/bundle/vim-ruby
-	url = http://github.com/vim-ruby/vim-ruby.git
+	url = https://github.com/vim-ruby/vim-ruby.git
