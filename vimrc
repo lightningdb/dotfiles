@@ -132,9 +132,42 @@ set winwidth=84 " always have enough width to view file
 
 let html_use_css=1
 
-filetype off " set up pathogen to allow plugin bundling
-set runtimepath+=~/home/vim-pathogen " for vim-pathogen to be a submodule too
-call pathogen#infect()
+filetype off " set up vundle to allow plugin bundling
+set runtimepath+=~/home/vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'Townk/vim-autoclose'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'ervandew/supertab'
+Bundle 'godlygeek/tabular'
+Bundle 'mileszs/ack.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/snipmate-snippets'
+Bundle 'sjbach/lusty'
+Bundle 'slack/vim-bufexplorer'
+Bundle 'ton/vim-bufsurf'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-pathogen'
+Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/BufOnly.vim'
+Bundle 'vim-scripts/YankRing.vim'
+Bundle 'vim-scripts/genutils'
+Bundle 'vim-scripts/tslime.vim'
+Bundle 'vim-scripts/vimwiki'
+Bundle 'wgibbs/vim-irblack'
+Bundle 'wincent/Command-T'
 
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
