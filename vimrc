@@ -20,11 +20,6 @@ set nu     " Line numbers on
 set nowrap " Line wrapping off
 set directory=/tmp
 
-" need both of these for vim to startup with whitespace and line-endings
-" switched off
-set list
-:set list!
-
 " set to use 'par' for formatting
 set formatprg=par\ -w72qrg
 
@@ -33,13 +28,17 @@ let g:CommandTMaxHeight = 15
 set wildignore+=vendor/rails/**,teamsite/**
 
 " Visual
+set novisualbell  " No blinking .
+set noerrorbells  " No noise.
+set laststatus=2  " Always show status line.
 set showmatch " Show matching brackets.
 set mat=5     " Bracket blinking.
 " Show $ at end of line and trailing space as ~
 set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
-set novisualbell  " No blinking .
-set noerrorbells  " No noise.
-set laststatus=2  " Always show status line.
+" BUT, turn the above off by default
+" need both for vim to start with whitespace and line-endings off
+set list
+:set list!
 
 " no toolbar, no menu
 set guioptions-=T
@@ -47,7 +46,6 @@ set guioptions-=m
 
 " os x backspace fix
 set backspace=indent,eol,start
-"set t_kb
 fixdel
 
 " tabs -> spaces
@@ -56,8 +54,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-" turn mouse on
-set mouse=a
+set mouse=a " turn mouse on
 
 " %% expands to the current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -122,18 +119,12 @@ map <Leader>w :set list!<CR>
 
 " #### From DestroyAllSoftware screencast on file navigation in vim
 set winwidth=84 " always have enough width to view file
-" We have to have a winheight bigger than we want to set winminheight. But if
-" we set winheight to be huge before winminheight, the winminheight set will
-" fail.
-"set winheight=5
-"set winminheight=5
-"set winheight=999
 " ####
 
 let html_use_css=1
 
 filetype off " set up vundle to allow plugin bundling
-set runtimepath+=~/home/vim/bundle/vundle
+set runtimepath+=$HOME/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'vim-scripts/BufOnly.vim'
@@ -144,9 +135,8 @@ Bundle 'vim-scripts/genutils'
 Bundle 'vim-scripts/LustyExplorer'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/snipmate-snippets'
-Bundle 'msanders/snipmate.vim'
-Bundle 'ervandew/supertab'
+"Bundle 'scrooloose/snipmate-snippets'
+"Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'vim-scripts/tslime.vim'
 Bundle 'Townk/vim-autoclose'
@@ -167,6 +157,12 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/vimwiki'
 Bundle 'gmarik/vundle'
+" TODO fix snipmate, flat out does not work right now
+" snipmate dependencies
+"Bundle "MarcWeber/vim-addon-mw-utils"
+"Bundle "tomtom/tlib_vim"
+"Bundle "honza/snipmate-snippets"
+
 
 filetype off " set up vundle to allow plugin bundling
 filetype on           " Enable filetype detection
@@ -182,7 +178,6 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
-let g:snippets_dir='~/home/vim/bundle/snipmate-snippets,~/home/vim/ldb-snippets'
 
 " vimwiki options
 let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
