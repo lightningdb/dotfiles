@@ -135,8 +135,7 @@ Bundle 'vim-scripts/genutils'
 Bundle 'vim-scripts/LustyExplorer'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-"Bundle 'scrooloose/snipmate-snippets'
-"Bundle 'ervandew/supertab'
+Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'vim-scripts/tslime.vim'
 Bundle 'Townk/vim-autoclose'
@@ -157,12 +156,14 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/vimwiki'
 Bundle 'gmarik/vundle'
-" TODO fix snipmate, flat out does not work right now
-" snipmate dependencies
-"Bundle "MarcWeber/vim-addon-mw-utils"
-"Bundle "tomtom/tlib_vim"
-"Bundle "honza/snipmate-snippets"
 
+" snipmate dependencies
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+"Bundle 'honza/snipmate-snippets'
+Bundle 'lightningdb/snipmate-snippets'
+Bundle 'garbas/vim-snipmate'
+source $HOME/.vim/bundle/snipmate-snippets/support_functions.vim
 
 filetype off " set up vundle to allow plugin bundling
 filetype on           " Enable filetype detection
