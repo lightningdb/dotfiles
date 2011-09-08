@@ -12,3 +12,4 @@
 
 --ignore-dir=coverage
 --ignore-dir=log
+--ignore-dir=tmp

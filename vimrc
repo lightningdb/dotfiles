@@ -20,12 +20,9 @@ set nu     " Line numbers on
 set nowrap " Line wrapping off
 set directory=/tmp
 
-" set to use 'par' for formatting
-set formatprg=par\ -w72qrg
-
 " Command-T settings
 let g:CommandTMaxHeight = 15
-set wildignore+=vendor/rails/**,teamsite/**
+set wildignore+=vendor/rails/**,teamsite/**,spec/fixtures/**
 
 " Visual
 set novisualbell  " No blinking .
@@ -137,7 +134,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
-Bundle 'vim-scripts/tslime.vim'
+Bundle 'xaviershay/tslime.vim'
 Bundle 'Townk/vim-autoclose'
 Bundle 'slack/vim-bufexplorer'
 Bundle 'ton/vim-bufsurf'
@@ -170,29 +167,15 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
-function! s:DiffWithSaved()
-  let filetype=&ft
-  diffthis
-  vnew | r # | normal! 1Gdd
-  diffthis
-  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
-endfunction
-com! DiffSaved call s:DiffWithSaved()
-
-
 " vimwiki options
-let g:vimwiki_list = [{ 'path': '~/vimwiki/', 'ext': '.txt' }]
+let g:vimwiki_list = [{ 'path': '~/vimwiki/' }]
 
-command! Rroutes :Redit config/routes.rb
-command! Rblueprints :Redit spec/blueprints.rb
+command! Rroutes :R config/routes.rb
+command! Rblueprints :R spec/blueprints.rb
 
 if exists(":Tabularize")
-  nmap <Leader>a\= :Tabularize /=<CR>
-  vmap <Leader>a\= :Tabularize /=<CR>
-  nmap <Leader>a\: :Tabularize /:\zs<CR>
-  vmap <Leader>a\: :Tabularize /:\zs<CR>
-  nmap <Leader>a\| :Tabularize /\|<CR>
-  vmap <Leader>a\| :Tabularize /\|<CR>
+  nmap <Leader>aa :Tabularize /\|<CR>
+  vmap <Leader>aa :Tabularize /\|<CR>
 endif
 
 " #### From DestroyAllSoftware screencast on file navigation in vim
@@ -235,7 +218,7 @@ map <leader>r :call RunTestFile()<cr>
 " Run only the example under the cursor
 map <leader>R :call RunNearestTest()<cr>
 " Run all test files
-map <leader>a :call RunTests('spec')<cr>
+map <leader>rr :call RunTests('spec')<cr>
 
 set t_Co=256
 colorscheme solarized
