@@ -169,6 +169,7 @@ filetype plugin on    " Enable filetype-specific plugins
 
 " vimwiki options
 let g:vimwiki_list = [{ 'path': '~/vimwiki/' }]
+let g:vimwiki_table_auto_fmt=0
 
 command! Rroutes :R config/routes.rb
 command! Rblueprints :R spec/blueprints.rb
