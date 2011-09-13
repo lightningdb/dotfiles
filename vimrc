@@ -27,7 +27,6 @@ set wildignore+=vendor/rails/**,teamsite/**,spec/fixtures/**
 " Visual
 set novisualbell  " No blinking .
 set noerrorbells  " No noise.
-set laststatus=2  " Always show status line.
 set showmatch " Show matching brackets.
 set mat=5     " Bracket blinking.
 " Show $ at end of line and trailing space as ~
@@ -159,7 +158,7 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 "Bundle 'honza/snipmate-snippets'
 Bundle 'lightningdb/snipmate-snippets'
-Bundle 'garbas/vim-snipmate'
+Bundle 'lightningdb/vim-snipmate'
 source $HOME/.vim/bundle/snipmate-snippets/support_functions.vim
 
 filetype off " set up vundle to allow plugin bundling
@@ -170,6 +169,38 @@ filetype plugin on    " Enable filetype-specific plugins
 " vimwiki options
 let g:vimwiki_list = [{ 'path': '~/vimwiki/' }]
 let g:vimwiki_table_auto_fmt=0
+
+"statusline setup
+set statusline=%f       "tail of the filename
+
+"display a warning if fileformat isnt unix
+set statusline+=%#warningmsg#
+set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+set statusline+=%*
+
+"display a warning if file encoding isnt utf-8
+set statusline+=%#warningmsg#
+set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+set statusline+=%*
+
+set statusline+=%h      "help file flag
+set statusline+=%y      "filetype
+set statusline+=%r      "read only flag
+set statusline+=%m      "modified flag
+
+set statusline+=%{fugitive#statusline()}
+
+"display a warning if &paste is set
+set statusline+=%#error#
+set statusline+=%{&paste?'[paste]':''}
+set statusline+=%*
+
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+set laststatus=2
+
 
 command! Rroutes :R config/routes.rb
 command! Rblueprints :R spec/blueprints.rb
