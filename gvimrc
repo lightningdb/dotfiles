@@ -1,7 +1,7 @@
 if has("gui_gtk2")
   set guifont=Inconsolata-g\ Medium\ 12
 elseif has("gui_macvim")
-  set guifont=Inconsolata-g:h14
+  set guifont=Inconsolata-g:h16
 end
 
 set background=dark
