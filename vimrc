@@ -4,7 +4,7 @@ syntax on
 
 let mapleader = ","
 
-set nohls
+set hls
 set incsearch
 set showcmd
 
@@ -109,6 +109,9 @@ map <Leader>t :CommandT<CR>
 " Toggle off whitespace highlighting
 map <Leader>w :set list!<CR>
 
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
 " #########################
 " END BINDINGS
 " #########################
@@ -205,10 +208,8 @@ set laststatus=2
 command! Rroutes :R config/routes.rb
 command! Rblueprints :R spec/blueprints.rb
 
-if exists(":Tabularize")
-  nmap <Leader>aa :Tabularize /\|<CR>
-  vmap <Leader>aa :Tabularize /\|<CR>
-endif
+nmap <Leader>aa :Tabularize /\|<CR>
+vmap <Leader>aa :Tabularize /\|<CR>
 
 " #### From DestroyAllSoftware screencast on file navigation in vim
 function! RunTests(filename)
