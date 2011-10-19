@@ -58,6 +58,8 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 let g:surround_{char2nr('-')} = "<% \r %>"
 let g:surround_{char2nr('=')} = "<%= \r %>"
 
+let g:yankring_history_dir = '$HOME/.vim'
+
 " #########################
 " BINDINGS
 " #########################
