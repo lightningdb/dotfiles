@@ -1,8 +1,13 @@
+" .vimrc
+" Author: Dave Bolton <dave@davebolton.net>
+" Source: http://github.com/lightningdb/dotfiles/blob/master/vimrc
+
 set nocompatible
 set magic
 syntax on
 
 let mapleader = ","
+let maplocalleader = "\\"
 
 set hls
 set incsearch
@@ -11,10 +16,14 @@ set showcmd
 set hidden
 set wildmenu
 set autoread
+set title
 set nobackup
 set nowritebackup
 set smartindent
 set gdefault
+set ttyfast
+set ruler
+set history=500
 set cursorline
 set nu     " Line numbers on
 set nowrap " Line wrapping off
@@ -50,7 +59,16 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
+set scrolloff=3
+set sidescroll=1
+set sidescrolloff=10
+
 set mouse=a " turn mouse on
+
+set virtualedit+=block
+
+" Save when losing focus
+au FocusLost * :wa
 
 " %% expands to the current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -60,6 +78,8 @@ let g:surround_{char2nr('=')} = "<%= \r %>"
 
 let g:yankring_history_dir = '$HOME/.vim'
 
+iabbrev <silent> db/ http://davebolton.net/<CR>
+
 " #########################
 " BINDINGS
 " #########################
@@ -68,16 +88,21 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+noremap j gj
+noremap k gk
 
-map <leader>q :BufO<CR>
+nnoremap <CR> o<ESC>
+nnoremap .. '.zz
 
-map <leader>f :Ack<space>
+noremap <leader>q :BufO<CR>
+
 " A function to search for word under cursor, using Ack plugin
 function! SearchWord()
    normal "zyiw
    exe ':Ack '.@z
 endfunction
-map <leader>F :call SearchWord()<CR>
+noremap <leader>f :Ack<space>
+noremap <leader>F :call SearchWord()<CR>
 
 " space = pagedown, - = pageup
 noremap <Space> <PageDown>
@@ -91,28 +116,46 @@ nnoremap <F5><F5> :set invhls hls?<CR>    " use f5f5 to toggle search hilight
 nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
 
-map <C-t> <Esc>:%s/[ ^I]*$//<CR>:retab<CR> " remove trailing space and retab
+noremap <C-t> <Esc>:%s/[ ^I]*$//<CR>:retab<CR> " remove trailing space and retab
 
-nmap <leader>s :source ~/.vimrc<CR>
-nmap <leader>v :e ~/.vimrc<CR>
+nnoremap <leader>sv :source ~/.vimrc<CR>
+nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
+nnoremap <leader>es <C-w>s<C-w>j<C-w>L:e ~/.vim/bundle/snipmate-snippets<cr>
 
 nnoremap <leader>d :NERDTreeToggle<CR>
 
-nmap <S-H> :BufSurfBack<CR>
-nmap <S-L> :BufSurfForward<CR>
+nnoremap <S-H> :BufSurfBack<CR>
+nnoremap <S-L> :BufSurfForward<CR>
+
+" Faster Esc
+inoremap jk <esc>
+
+" Sudo to write
+cmap w!! w !sudo tee % >/dev/null
 
 " CTags
-map <Leader>rt :!ctags --extra=+f --exclude=teamsite --exclude=public -R *<CR><CR>
+noremap <Leader>rt :!ctags --extra=+f --exclude=teamsite --exclude=public -R *<CR><CR>
 
 " Flush Command T (rescans directories)
-map <Leader>tf :CommandTFlush<CR>
-map <Leader>t :CommandT<CR>
+noremap <Leader>tf :CommandTFlush<CR>
+noremap <Leader>t :CommandT<CR>
 
 " Toggle off whitespace highlighting
-map <Leader>w :set list!<CR>
+noremap <Leader>w :set list!<CR>
 
 " Don't use Ex mode, use Q for formatting
-map Q gq
+noremap Q gq
+
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>ga :Gadd<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gco :Gcheckout<cr>
+nnoremap <leader>gci :Gcommit<cr>
+nnoremap <leader>gm :Gmove<cr>
+nnoremap <leader>gr :Gremove<cr>
+nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
 
 " #########################
 " END BINDINGS
@@ -210,8 +253,8 @@ set laststatus=2
 command! Rroutes :R config/routes.rb
 command! Rblueprints :R spec/blueprints.rb
 
-nmap <Leader>aa :Tabularize /\|<CR>
-vmap <Leader>aa :Tabularize /\|<CR>
+nnoremap <Leader>aa :Tabularize /\|<CR>
+vnoremap <Leader>aa :Tabularize /\|<CR>
 
 " #### From DestroyAllSoftware screencast on file navigation in vim
 function! RunTests(filename)
@@ -249,11 +292,11 @@ function! RunNearestTest()
 endfunction
 
 " Run this file
-map <leader>r :call RunTestFile()<cr>
+noremap <leader>r :call RunTestFile()<cr>
 " Run only the example under the cursor
-map <leader>R :call RunNearestTest()<cr>
+noremap <leader>R :call RunNearestTest()<cr>
 " Run all test files
-map <leader>rr :call RunTests('spec')<cr>
+noremap <leader>rr :call RunTests('spec')<cr>
 
 set t_Co=256
 colorscheme solarized
