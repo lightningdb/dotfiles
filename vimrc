@@ -99,9 +99,9 @@ noremap <leader>q :BufO<CR>
 " A function to search for word under cursor, using Ack plugin
 function! SearchWord()
    normal "zyiw
-   exe ':Ack '.@z
+   exe ':Ack! '.@z
 endfunction
-noremap <leader>f :Ack<space>
+noremap <leader>f :Ack!<space>
 noremap <leader>F :call SearchWord()<CR>
 
 " space = pagedown, - = pageup
