@@ -92,6 +92,12 @@ noremap j gj
 noremap k gk
 
 nnoremap <CR> o<ESC>
+" don't use above mapping of CR for newline in quickfix window
+augroup quickfix
+  autocmd!
+  au BufReadPost quickfix nnoremap <CR> <CR>
+augroup END
+
 nnoremap .. '.zz
 
 noremap <leader>q :BufO<CR>
