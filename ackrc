@@ -1,10 +1,14 @@
 # lexically sort filenames
 --sort-files
 
---type-add=ruby=rake,haml
+--type-add=ruby=rake,builder
 --type-add=vim=vimrc
 --type-add=js=json
 --type-set=css=sass
+--type-set=haml=.haml
+--type-set=cucumber=.feature
+--type-set=sass=.sass
+
 
 # add types ack doesn't know about
 --type-set=MARKDOWN=md,mkd,markdown
