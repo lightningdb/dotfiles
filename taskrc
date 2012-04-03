@@ -148,7 +148,7 @@ alias.export.vcalendar=export.ical            # They are the same
 
 # task long
 report.long.description=Lists all task, all data, matching the specified criteria
-report.long.columns=id,project,priority,entry,start,due,recur,countdown,age,tags,description
+report.long.columns=id,project,priority,entry,start,due,recur,countdown,entry.age,tags,description
 report.long.labels=ID,Project,Pri,Added,Started,Due,Recur,Countdown,Age,Tags,Description
 report.long.sort=priority-,due+,project+
 report.long.filter=status:pending
@@ -157,9 +157,9 @@ report.long.filter=status:pending
 
 # task list
 report.list.description=Lists all tasks matching the specified criteria
-report.list.columns=id,project,priority,due,active,age,description
+report.list.columns=id,project,priority,due,start.active,entry.age,description
 report.list.labels=ID,Project,Pri,Due,Active,Age,Description
-report.list.sort=priority-,due+,active-,project+
+report.list.sort=priority-,due+,start.active-,project+
 report.list.filter=status:pending
 #report.list.dateformat=m/d/Y
 #report.list.annotations=full
@@ -184,7 +184,7 @@ report.minimal.filter=status:pending
 
 # task newest
 report.newest.description=Shows the newest tasks
-report.newest.columns=id,project,priority,due,active,age,description
+report.newest.columns=id,project,priority,due,start.active,entry.age,description
 report.newest.labels=ID,Project,Pri,Due,Active,Age,Description
 report.newest.sort=id-
 report.newest.filter=status:pending limit:10
@@ -193,7 +193,7 @@ report.newest.filter=status:pending limit:10
 
 # task oldest
 report.oldest.description=Shows the oldest tasks
-report.oldest.columns=id,project,priority,due,active,age,description
+report.oldest.columns=id,project,priority,due,start.active,entry.age,description
 report.oldest.labels=ID,Project,Pri,Due,Active,Age,Description
 report.oldest.sort=id+
 report.oldest.filter=status:pending limit:10
@@ -202,16 +202,16 @@ report.oldest.filter=status:pending limit:10
 
 # task overdue
 report.overdue.description=Lists overdue tasks matching the specified criteria
-report.overdue.columns=id,project,priority,due,active,age,description
+report.overdue.columns=id,project,priority,due,start.active,entry.age,description
 report.overdue.labels=ID,Project,Pri,Due,Active,Age,Description
-report.overdue.sort=due+,priority-,active-,project+
+report.overdue.sort=due+,priority-,start.active-,project+
 report.overdue.filter=status:pending due.before:today
 #report.overdue.dateformat=m/d/Y
 #report.overdue.annotations=full
 
 # task active
 report.active.description=Lists active tasks matching the specified criteria
-report.active.columns=id,project,priority,due,active,age,description
+report.active.columns=id,project,priority,due,start.active,entry.age,description
 report.active.labels=ID,Project,Pri,Due,Active,Age,Description
 report.active.sort=due+,priority-,project+
 report.active.filter=status:pending start.any:
@@ -220,7 +220,7 @@ report.active.filter=status:pending start.any:
 
 # task completed
 report.completed.description=Lists completed tasks matching the specified criteria
-report.completed.columns=end,project,priority,age,description
+report.completed.columns=end,project,priority,entry.age,description
 report.completed.labels=Complete,Project,Pri,Age,Description
 report.completed.sort=end+,priority-,project+
 report.completed.filter=status:completed
@@ -229,16 +229,16 @@ report.completed.filter=status:completed
 
 # task recurring
 report.recurring.description=Lists recurring tasks matching the specified criteria
-report.recurring.columns=id,project,priority,due,recur,active,age,description
+report.recurring.columns=id,project,priority,due,recur,start.active,entry.age,description
 report.recurring.labels=ID,Project,Pri,Due,Recur,Active,Age,Description
-report.recurring.sort=due+,priority-,active-,project+
+report.recurring.sort=due+,priority-,start.active-,project+
 report.recurring.filter=status:pending parent.any:
 #report.recurring.dateformat=m/d/Y
 #report.recurring.annotations=full
 
 # task waiting
 report.waiting.description=Lists all waiting tasks matching the specified criteria
-report.waiting.columns=id,project,priority,wait,age,description
+report.waiting.columns=id,project,priority,wait,entry.age,description
 report.waiting.labels=ID,Project,Pri,Wait,Age,Description
 report.waiting.sort=wait+,priority-,project+
 report.waiting.filter=status:waiting
@@ -247,17 +247,17 @@ report.waiting.filter=status:waiting
 
 # task all
 report.all.description=Lists all tasks matching the specified criteria
-report.all.columns=id,project,priority,due,active,age,description
+report.all.columns=id,project,priority,due,start.active,entry.age,description
 report.all.labels=ID,Project,Pri,Due,Active,Age,Description
-report.all.sort=due+,priority-,active-,project+
+report.all.sort=due+,priority-,start.active-,project+
 #report.all.dateformat=m/d/Y
 #report.all.annotations=full
 
 # task next
 report.next.description=Lists the most urgent tasks
-report.next.columns=id,project,priority,due,active,age,description
+report.next.columns=id,project,priority,due,start.active,entry.age,description
 report.next.labels=ID,Project,Pri,Due,Active,Age,Description
-report.next.sort=priority-,due+,active-,project+
+report.next.sort=priority-,due+,start.active-,project+
 report.next.filter=status:pending limit:page
 #report.next.dateformat=m/d/Y
 #report.next.annotations=full
