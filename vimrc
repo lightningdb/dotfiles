@@ -204,12 +204,12 @@ Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'vim-ruby/vim-ruby'
-"Bundle 'Townk/vim-autoclose'
-Bundle 'kana/vim-smartinput'
-Bundle 'vim-scripts/scala.vim'
+Bundle 'Townk/vim-autoclose'
+Bundle 'derekwyatt/vim-scala'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/vimwiki'
 Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
 
 " snipmate dependencies
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -259,6 +259,11 @@ set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
 
+"folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1        
 
 command! Rroutes :R config/routes.rb
 command! Rblueprints :R spec/blueprints.rb
@@ -314,3 +319,6 @@ set background=light
 " toggle the background for solarized light or dark
 call togglebg#map("<F5>") 
 
+if filereadable(glob("~/.vimrc.local"))
+  source "~/.vimrc.local"
+endif
