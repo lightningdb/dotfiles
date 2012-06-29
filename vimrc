@@ -164,6 +164,8 @@ nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
 
+noremap <leader>vo :VimwikiGoto
+
 " #########################
 " END BINDINGS
 " #########################
