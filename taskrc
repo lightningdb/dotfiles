@@ -146,6 +146,18 @@ alias.export.vcalendar=export.ical            # They are the same
 # Filter:        pro:x pri:H +bug limit:10
 # Dateformat:    due date format in reports
 
+# tasks done yesterday
+report.yesterday.description=Tasks done yesterday
+report.yesterday.columns=project,end,tags,description
+report.yesterday.filter=end.after:yesterday end.before:today status:completed
+report.yesterday.sort=project+
+
+# tasks done today
+report.today.description=Tasks done today
+report.today.columns=project,end,status,tags,description
+report.today.filter=end.after:today end.before:tomorrow status:completed
+report.today.sort=project+
+
 # task long
 report.long.description=Lists all task, all data, matching the specified criteria
 report.long.columns=id,project,priority,entry,start,due,recur,countdown,entry.age,tags,description
@@ -157,8 +169,8 @@ report.long.filter=status:pending
 
 # task list
 report.list.description=Lists all tasks matching the specified criteria
-report.list.columns=id,project,priority,due,start.active,entry.age,description
-report.list.labels=ID,Project,Pri,Due,Active,Age,Description
+report.list.columns=id,project,tags,priority,due,start.active,entry.age,description
+report.list.labels=ID,Project,Tags,Pri,Due,Active,Age,Description
 report.list.sort=priority-,due+,start.active-,project+
 report.list.filter=status:pending
 #report.list.dateformat=m/d/Y
