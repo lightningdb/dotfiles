@@ -1,4 +1,5 @@
 " .vimrc
+"
 " Author: Dave Bolton <dave@davebolton.net>
 " Source: http://github.com/lightningdb/dotfiles/blob/master/vimrc
 
@@ -127,7 +128,7 @@ noremap <C-t> <Esc>:%s/[ ^I]*$//<CR>:retab<CR> " remove trailing space and retab
 
 nnoremap <leader>sv :source ~/.vimrc<CR>
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
-nnoremap <leader>es <C-w>s<C-w>j<C-w>L:e ~/.vim/bundle/snipmate-snippets<cr>
+nnoremap <leader>es <C-w>s<C-w>j<C-w>L:e ~/.vim/bundle/snipmate-snippets/snippets<cr>
 
 nnoremap <leader>d :NERDTreeToggle<CR>
 
@@ -165,10 +166,16 @@ nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
 
 noremap <leader>vo :VimwikiGoto
+noremap <leader>mi :VimwikiGoto MyInbox<cr>
 
 " #########################
 " END BINDINGS
 " #########################
+
+" vimwiki options
+let g:vimwiki_list = [{ 'path': '~/vimwiki/' }]
+let g:vimwiki_table_auto_fmt=0
+let g:vimwiki_table_mappings=0
 
 " #### From DestroyAllSoftware screencast on file navigation in vim
 set winwidth=84 " always have enough width to view file
@@ -225,10 +232,6 @@ filetype off " set up vundle to allow plugin bundling
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
-
-" vimwiki options
-let g:vimwiki_list = [{ 'path': '~/vimwiki/' }]
-let g:vimwiki_table_auto_fmt=0
 
 "statusline setup
 set statusline=%f       "tail of the filename
@@ -324,3 +327,5 @@ call togglebg#map("<F5>")
 if filereadable(glob("~/.vimrc.local"))
   source "~/.vimrc.local"
 endif
+
+
