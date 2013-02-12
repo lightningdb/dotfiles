@@ -5,6 +5,7 @@
 
 set nocompatible
 set magic
+set shortmess+=I
 syntax on
 
 let mapleader = ","
@@ -30,8 +31,6 @@ set nu     " Line numbers on
 set nowrap " Line wrapping off
 set directory=/tmp
 
-" Command-T settings
-let g:CommandTMaxHeight = 15
 set wildignore+=vendor/rails/**,teamsite/**,spec/fixtures/**
 
 " Visual
@@ -77,10 +76,17 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 let g:surround_{char2nr('-')} = "<% \r %>"
 let g:surround_{char2nr('=')} = "<%= \r %>"
 
-let g:yankring_history_dir = '$HOME/.vim'
+let g:yankring_history_dir = '$HOME'
 let g:yankring_manual_clipboard_check = 0
+let g:yankring_replace_n_pkey = '<C-y>'
+"let g:yankring_replace_n_nkey = '<C-y>'
 
-iabbrev <silent> db/ http://davebolton.net/<CR>
+let g:ycm_key_detailed_diagnostics = ''
+
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "bundle/snipmate-snippets/snippets"]
+let g:UltiSnipsExpandTrigger="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " #########################
 " BINDINGS
@@ -144,10 +150,6 @@ cmap w!! w !sudo tee % >/dev/null
 " CTags
 noremap <Leader>rt :!ctags --extra=+f --exclude=teamsite --exclude=public -R *<CR><CR>
 
-" Flush Command T (rescans directories)
-noremap <Leader>tf :CommandTFlush<CR>
-noremap <Leader>t :CommandT<CR>
-
 " Toggle off whitespace highlighting
 noremap <Leader>w :set list!<CR>
 
@@ -165,8 +167,10 @@ nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
 
-noremap <leader>vo :VimwikiGoto
-noremap <leader>mi :VimwikiGoto MyInbox<cr>
+noremap <leader>vo :VimwikiIndex<cr>:VimwikiGoto
+noremap <leader>mi :VimwikiIndex<cr>:VimwikiGoto MyInbox<cr>
+
+noremap <leader>tt :read !task today<cr>
 
 " #########################
 " END BINDINGS
@@ -176,6 +180,8 @@ noremap <leader>mi :VimwikiGoto MyInbox<cr>
 let g:vimwiki_list = [{ 'path': '~/vimwiki/' }]
 let g:vimwiki_table_auto_fmt=0
 let g:vimwiki_table_mappings=0
+let g:vimwiki_use_calendar=1
+"let g:vimwiki_debug=1
 
 " #### From DestroyAllSoftware screencast on file navigation in vim
 set winwidth=84 " always have enough width to view file
@@ -188,17 +194,16 @@ set runtimepath+=$HOME/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'vim-scripts/BufOnly.vim'
-Bundle 'wincent/Command-T'
+Bundle 'vim-scripts/calendar.vim--Matsumoto'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'vim-scripts/genutils'
 Bundle 'vim-scripts/LustyExplorer'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'xaviershay/tslime.vim'
-Bundle 'slack/vim-bufexplorer'
+Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'ton/vim-bufsurf'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-cucumber'
@@ -213,20 +218,17 @@ Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'Townk/vim-autoclose'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/vimwiki'
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'Raimondi/delimitMate'
 
-" snipmate dependencies
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-"Bundle 'honza/snipmate-snippets'
+Bundle 'SirVer/ultisnips'
+
 Bundle 'lightningdb/snipmate-snippets'
-Bundle 'lightningdb/vim-snipmate'
-source $HOME/.vim/bundle/snipmate-snippets/support_functions.vim
 
 filetype off " set up vundle to allow plugin bundling
 filetype on           " Enable filetype detection
@@ -281,7 +283,7 @@ function! RunTests(filename)
     " Write the file and run tests for the given filename
     :w
     :silent !echo;echo;echo;echo;echo
-    exec ":!bundle exec spec " . a:filename
+    exec ":!bundle exec rspec " . a:filename
 endfunction
 
 function! SetTestFile()

@@ -1,0 +1,24 @@
+alias work="clear && echo '## WORK ##' && task +work -someday -waiting ready"
+alias high="clear && echo '## WORK ##' && task +work -someday -waiting pri:H ready"
+alias errand="clear && echo '## ERRAND ##' && task +errand -someday ready"
+alias atwork="clear && echo '## AT WORK ##' && task +atwork -someday ready"
+alias home="clear && echo '## HOME ##' && task +home -someday ready"
+alias phone="clear && echo '## PHONE ##' && task +phone -someday ready"
+alias chili="clear && task list +chili -someday ready"
+alias someday="clear && echo '## SOMEDAY ##' && task +someday ready"
+alias computer="clear && echo '## COMPUTER ##' && task +computer -someday ready"
+alias projects="clear && echo '## PROJECTS ##' && task projects"
+alias waiting="clear && echo '## WAITING FUTURE ##' && task waiting +waiting; echo '\n## WAITING NOW ##' && task +waiting ready"
+alias dean="task +dean ready"
+alias today="task today"
+alias yesterday="task yesterday"
+td() { task "$*" done }
+tm() { 
+  tasknum=$1
+  shift
+  otherargs=$*
+  task "$tasknum" mod "$otherargs"
+}
+alias ta="task add"
+
+

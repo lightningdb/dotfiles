@@ -1,0 +1,4 @@
+alias wiki="vim +VimwikiIndex"
+alias diary="vim +VimwikiMakeDiaryNote"
+alias inbox="vim +VimwikiIndex +VimwikiGoto\ MyInbox"
+aw() { ack -i "$*" ~/vimwiki }
