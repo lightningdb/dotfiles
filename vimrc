@@ -83,9 +83,10 @@ let g:yankring_replace_n_pkey = '<C-y>'
 
 let g:ycm_key_detailed_diagnostics = ''
 
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "bundle/snipmate-snippets/snippets"]
-let g:UltiSnipsExpandTrigger="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-tab>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsExpandTrigger="<c-n>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " #########################
@@ -227,8 +228,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'Raimondi/delimitMate'
 
 Bundle 'SirVer/ultisnips'
-
-Bundle 'lightningdb/snipmate-snippets'
+Bundle 'lightningdb/UltiSnips-snippets'
 
 filetype off " set up vundle to allow plugin bundling
 filetype on           " Enable filetype detection
