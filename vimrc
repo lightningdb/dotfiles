@@ -89,6 +89,8 @@ let g:UltiSnipsListSnippets="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+let g:session_autoload = 'no'
+
 " #########################
 " BINDINGS
 " #########################
@@ -173,6 +175,8 @@ noremap <leader>mi :VimwikiIndex<cr>:VimwikiGoto MyInbox<cr>
 
 noremap <leader>tt :read !task today<cr>
 
+noremap <leader>ops :OpenSession inbox_and_goals_and_diary<cr>
+
 " #########################
 " END BINDINGS
 " #########################
@@ -226,6 +230,7 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Raimondi/delimitMate'
+Bundle 'xolox/vim-session'
 
 Bundle 'SirVer/ultisnips'
 Bundle 'lightningdb/UltiSnips-snippets'
@@ -278,6 +283,15 @@ command! Rblueprints :R spec/blueprints.rb
 nnoremap <Leader>aa :Tabularize /\|<CR>
 vnoremap <Leader>aa :Tabularize /\|<CR>
 
+" ### Search vimwiki
+noremap <leader>ss :sb<cr>:call GetSearchInput()<cr>:VimwikiIndex<cr>:exe ":VimwikiSearch \/" . VWSearch . "\/"<cr>:lopen<cr>
+function GetSearchInput()
+  call inputsave()
+  let g:VWSearch = input("Search Vimwiki:")
+  call inputrestore()
+endfunction
+
+
 " #### From DestroyAllSoftware screencast on file navigation in vim
 function! RunTests(filename)
     " Write the file and run tests for the given filename
@@ -329,5 +343,4 @@ call togglebg#map("<F5>")
 if filereadable(glob("~/.vimrc.local"))
   source "~/.vimrc.local"
 endif
-
 
