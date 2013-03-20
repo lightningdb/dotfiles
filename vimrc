@@ -137,7 +137,7 @@ noremap <C-t> <Esc>:%s/[ ^I]*$//<CR>:retab<CR> " remove trailing space and retab
 
 nnoremap <leader>sv :source ~/.vimrc<CR>
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
-nnoremap <leader>es <C-w>s<C-w>j<C-w>L:e ~/.vim/bundle/snipmate-snippets/snippets<cr>
+nnoremap <leader>es <C-w>s<C-w>j<C-w>L:e ~/.vim/bundle/Ultisnips-snippets/snippets<cr>
 
 nnoremap <leader>d :NERDTreeToggle<CR>
 
