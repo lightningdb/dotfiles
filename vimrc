@@ -84,12 +84,15 @@ let g:yankring_replace_n_pkey = '<C-y>'
 let g:ycm_key_detailed_diagnostics = ''
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
-let g:UltiSnipsExpandTrigger="<c-n>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<F3>"
+let g:UltiSnipsListSnippets="<c-F3>"
+let g:UltiSnipsJumpForwardTrigger="<F3>"
+let g:UltiSnipsJumpBackwardTrigger="<s-F3>"
 
 let g:session_autoload = 'no'
+
+let g:vimwiki_hl_headers = 1
+
 
 " #########################
 " BINDINGS
@@ -130,8 +133,8 @@ nnoremap <F4><F4> :set invwrap wrap?<CR>  " use f4f4 to toggle wordwrap
 nnoremap <F5><F5> :set invhls hls?<CR>    " use f5f5 to toggle search hilight
 
 " Yankring Show
-nnoremap <silent> <F3> :YRShow<cr>
-inoremap <silent> <F3> <ESC>:YRShow<cr>
+nnoremap <silent> <F2> :YRShow<cr>
+inoremap <silent> <F2> <ESC>:YRShow<cr>
 
 noremap <C-t> <Esc>:%s/[ ^I]*$//<CR>:retab<CR> " remove trailing space and retab
 
@@ -172,6 +175,7 @@ nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
 
 noremap <leader>vo :VimwikiIndex<cr>:VimwikiGoto
 noremap <leader>mi :VimwikiIndex<cr>:VimwikiGoto MyInbox<cr>
+nmap <leader>xx <Plug>VimwikiToggleListItem
 
 noremap <leader>tt :read !task today<cr>
 
@@ -232,6 +236,10 @@ Bundle 'xolox/vim-session'
 
 Bundle 'SirVer/ultisnips'
 Bundle 'lightningdb/UltiSnips-snippets'
+
+" For debugging colorschemes
+"Bundle 'gerw/vim-HiLinkTrace'
+"Bundle 'vim-scripts/hexHighlight.vim'
 
 filetype off " set up vundle to allow plugin bundling
 filetype on           " Enable filetype detection
@@ -333,10 +341,13 @@ noremap <leader>R :call RunNearestTest()<cr>
 noremap <leader>rr :call RunTests('spec')<cr>
 
 set t_Co=256
-colorscheme solarized
-set background=light
+colorscheme ir_black
+set background=dark
+
+"colorscheme solarized
+"set background=light
 " toggle the background for solarized light or dark
-call togglebg#map("<F5>") 
+"call togglebg#map("<F5>") 
 
 if filereadable(glob("~/.vimrc.local"))
   source "~/.vimrc.local"
