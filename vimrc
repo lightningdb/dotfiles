@@ -80,6 +80,7 @@ let g:yankring_history_dir = '$HOME'
 let g:yankring_manual_clipboard_check = 0
 let g:yankring_replace_n_pkey = '<C-y>'
 "let g:yankring_replace_n_nkey = '<C-y>'
+let g:yankring_n_keys = 'Y D'
 
 let g:ycm_key_detailed_diagnostics = ''
 
@@ -93,6 +94,9 @@ let g:session_autoload = 'no'
 
 let g:vimwiki_hl_headers = 1
 
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+let g:airline_enable_fugitive=1
 
 " #########################
 " BINDINGS
@@ -220,7 +224,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'wgibbs/vim-irblack'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
@@ -232,7 +235,11 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Raimondi/delimitMate'
-Bundle 'xolox/vim-session'
+"Bundle 'xolox/vim-session'
+Bundle 'terryma/vim-expand-region'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'bling/vim-airline'
+Bundle 'Shougo/unite.vim'
 
 Bundle 'SirVer/ultisnips'
 Bundle 'lightningdb/UltiSnips-snippets'
