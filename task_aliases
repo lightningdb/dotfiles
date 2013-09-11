@@ -21,6 +21,7 @@ tm() {
 }
 alias ta="task add"
 alias taw="task add +work"
+alias tlw="task log +work"
 alias tac="task add +computer"
 alias tah="task add +home"
 alias tap="task add +phone"
