@@ -1,39 +1,143 @@
-alias ga='git add -A'
-alias gap='ga -p'
-alias gau='git add -u'
-alias gbr='git branch -v'
-alias gc!='git commit -v'
-alias gca='git commit -v -a'
-alias gcam='gca --amend'
-alias gch='git cherry-pick'
-alias gcm='git commit -v --amend'
-alias gco='git checkout'
-alias gcop='gco -p'
-alias gd='git diff -M'
-alias gd.='git diff -M --color-words="."'
-alias gdc='git diff --cached -M'
-alias gdc.='git diff --cached -M --color-words="."'
-alias gf='git fetch'
-alias glog='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
-alias gl='glog --graph'
-alias gla='gl --all'
-alias gm='git merge --no-ff'
-alias gmf='git merge --ff-only'
-alias gmfthis='gmf origin/$(git_current_branch)'
-alias gp='git push'
-alias gpthis='gp origin $(git_current_branch)'
-alias gr='git reset'
-alias grb='git rebase -p'
-alias grbthis='grb origin/$(git_current_branch)'
-alias grbc='git rebase --continue'
-alias grbi='git rebase -i'
-alias grh='git reset --hard'
+### Aliases
+
+# I use these in zsh; they should work fine in bash too.
+
+# Aliases have a couple of distinct uses. In the simplest case, they just speed
+# up your typing. I try to be consistent and use initials wherever possible.
+
+# Firstly, the three single-character aliases I use, for super-fast basic info.
+
+# A basic 'ls'.
+alias l='ls'
+
+# Repo status. I find short format much more readable because it's always
+# sorted alphabetically and uses a little column system to indicate state.
+alias s='git status --short --branch'
+
+# Git diff. This is most commonly run as just 'd', which shows the uncommitted
+# diff against HEAD, but remember you can diff across ranges and so on, e.g.
+#   - `d ..topic`: the complete diff between HEAD and topic
+#   - `d ...topic`: the diff on topic, from HEAD and topic's merge-base (i.e.
+#      the one-way diff on topic)
+#   - `d master... --stat`: the one-way diffstat from master to the current HEAD
+alias d='git diff -M'
+
+
+# The three commands for working with uncommitted changes per-hunk. The options
+# they present allow you to accept (y), reject (n), or split (s) each hunk. The
+# other options need a perusal of the manpage and some experimentation.
+#
+# git add --patch: stage uncommitted changes per-hunk.
+alias gap='ga --patch'
+
+# git reset --patch: unstage uncommitted changes per-hunk.
 alias grp='gr --patch'
-alias grsh='git reset --soft HEAD~'
-alias grv='git remote -v'
+
+# git checkout --patch: reset uncommitted changes per-hunk to a given
+# point (defaulting to HEAD, i.e. discard uncommitted changes per-hunk).
+alias gcop='gco --patch'
+
+# Update the given paths (or everything) to the given ref (or HEAD).
+#   - git checkout <branch>: Update everything to <branch>, i.e. check out that branch
+#   - git checkout ./file.txt <ref>: Update file.txt to its state in <ref>
+alias gco='git checkout'
+
+# Fetch all the named refs on the specified remote. Doesn't ever modify local
+# refs, so this is a safe & idempotent command.
+alias gf='git fetch'
+
+# Push the named branch to the named remote (or origin). If no branch is named,
+# the behaviour is defined by the 'push.default' config setting. Newer gits
+# default to just the current branch, but in the past it was 'everything',
+# which was surprising.
+alias gp='git push'
+
+# Update some combination of HEAD, the index, and the files on disk.
+#   --soft: updates just the HEAD
+#   --mixed (the default): updates the HEAD and the index
+# Some examples:
+#   - `git reset --soft HEAD~`: Move HEAD to the parent, without changing any
+#     files, i.e. the state the repo was in before HEAD was committed.
+#   - `git reset ./file.txt`: Unstage uncommitted changes in file.txt.
+alias gr='git reset'
+
+# Updates the index and the files on disk (i.e. this will discard uncommitted
+# changes).
+alias grh='git reset --hard'
+
+# Display the named commit. Useful options include --stat and --patch.
 alias gs='git show'
-alias gs.='git show --color-words="."'
-alias gst='git status'
-alias gsta='git stash'
+
+# Save uncommitted changes to the stash. Useful options include --keep-index,
+# to only stash unstaged changes and keep the index intact.
+alias gst='git stash'
+
+# Apply the most recent stash to the repo and discard it.
 alias gstp='git stash pop'
-alias gup='git smart-pull'
+
+
+
+# Right, next are some aliases that not only abbreviate, but wrap up some
+# functionality. The idea here is that the option in the alias is something
+# that you always want to use, and so you can be more consistent by using this
+# command through the alias: you don't need to remember to use the option every
+# time.
+
+# Like `git add`, but also consider tracked files that have been deleted. That
+# is, `ga` will add files in all three groups:
+#   - untracked (filesystem only)
+#   - tracked (filesystem & repo)
+#   - deleted (repo only)
+alias ga='git add -A'
+
+# Like `git add`, but only consider tracked files, i.e. 'tracked' and 'deleted'
+# above.
+alias gau='git add -u'
+
+# Include the current ref and commit summary in `git branch` output.
+alias gbr='git branch -v'
+
+# Include the diff against the existing HEAD in the commit edit dialog, so it
+# can be eyeballed. This is for catching mistakes manifesting as an unexpected
+# diff, e.g. a huge log file that you didn't mean to add.
+alias gc='git commit -v'
+
+# Follow renames when diffing. Git doesn't track renames explicitly: each
+# commit is a separate and complete snapshot. The '-M' option enables rename
+# detection based on the similarity of content between files, and it can hugely
+# shorten a diff when a large file was renamed as a small change was made
+# within it.
+alias gd='git diff -M'
+
+# Show the diff that's currently staged, i.e. if we committed now, the diff
+# that would exist between that commit and the existing HEAD.
+alias gdc='git diff --cached -M'
+
+# Preserve merges when rebasing. This prevents merges being flattened when
+# they could be, which means your history will retain its shape when you rebase
+# over it.
+alias grb='git rebase -p'
+
+# Don't fast-forward when merging, even if it's possible. A merge is a semantic
+# thing, so we want to choose when to merge and when not to.
+alias gm='git merge --no-ff'
+
+# Only merge if we can do it by fast-forwarding the HEAD to the merged branch's
+# tip. Use this when you explicitly don't want a merge commit.
+alias gmf='git merge --ff-only'
+
+# The logging format I prefer to use: graphed, one commit per line, important
+# info (graph, ref, message) to the left.
+alias gl='glog --graph'
+
+# As above, but show every named ref, not just HEAD.
+alias gla='gl --all'
+
+# My logging style, without the graph. This is useful for logging commit
+# ranges, e.g.
+#   - `glog ..topic`: show all the commits on 'topic' but not on HEAD
+#   - `glog ./file.txt --stat`: show commits (incl. diffstat) affecting file.txt
+#   - `glog -Gblah --patch`: show commits (incl. patch) that added or removed 'blah'
+#   These options can be combined, e.g.
+#   - `glog -Grails ./Gemfile* --patch`: show commits that changed the rails version in the gemfile
+alias glog='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
