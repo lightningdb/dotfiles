@@ -51,7 +51,6 @@ set guioptions-=m
 
 " os x backspace fix
 set backspace=indent,eol,start
-fixdel
 
 " tabs -> spaces
 set expandtab
@@ -84,7 +83,7 @@ let g:yankring_n_keys = 'Y D'
 
 let g:ycm_key_detailed_diagnostics = ''
 
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "ldb-snippets"]
 let g:UltiSnipsExpandTrigger="<F3>"
 let g:UltiSnipsListSnippets="<c-F3>"
 let g:UltiSnipsJumpForwardTrigger="<F3>"
@@ -180,6 +179,7 @@ nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
 noremap <leader>vo :VimwikiIndex<cr>:VimwikiGoto
 noremap <leader>mi :VimwikiIndex<cr>:VimwikiGoto MyInbox<cr>
 nmap <leader>xx <Plug>VimwikiToggleListItem
+nmap <leader>wq <Plug>VimwikiUISelect
 
 noremap <leader>tt :read !task today<cr>
 
@@ -190,7 +190,15 @@ noremap <leader>ops :OpenSession inbox_and_goals_and_diary<cr>
 " #########################
 
 " vimwiki options
-let g:vimwiki_list = [{ 'path': '~/vimwiki/' }]
+let wiki_life = {}
+let wiki_life.path = '~/vimwiki_split/life'
+let wiki_wha = {}
+let wiki_wha.path = '~/vimwiki_split/wha'
+let wiki_news = {}
+let wiki_news.path = '~/vimwiki_split/news'
+let wiki_westfield = {}
+let wiki_westfield.path = '~/vimwiki_split/westfield'
+let g:vimwiki_list = [wiki_life, wiki_wha, wiki_news, wiki_westfield]
 let g:vimwiki_table_auto_fmt=0
 let g:vimwiki_table_mappings=0
 let g:vimwiki_use_calendar=1
@@ -203,50 +211,55 @@ set winwidth=84 " always have enough width to view file
 let html_use_css=1
 
 filetype off " set up vundle to allow plugin bundling
-set runtimepath+=$HOME/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'vim-scripts/BufOnly.vim'
-Bundle 'vim-scripts/calendar.vim--Matsumoto'
-Bundle 'vim-scripts/YankRing.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'vim-scripts/genutils'
-Bundle 'vim-scripts/LustyExplorer'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'godlygeek/tabular'
-Bundle 'jeetsukumaran/vim-buffergator'
-Bundle 'ton/vim-bufsurf'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'wgibbs/vim-irblack'
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/vimwiki'
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'Raimondi/delimitMate'
-"Bundle 'xolox/vim-session'
-Bundle 'terryma/vim-expand-region'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'bling/vim-airline'
-Bundle 'Shougo/unite.vim'
+Plugin 'vim-scripts/BufOnly.vim'
+Plugin 'vim-scripts/calendar.vim--Matsumoto'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/genutils'
+"Plugin 'vim-scripts/LustyExplorer'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'ton/vim-bufsurf'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'wgibbs/vim-irblack'
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-repeat'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/vimwiki'
+Plugin 'gmarik/vundle'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Raimondi/delimitMate'
+"Plugin 'xolox/vim-session'
+Plugin 'terryma/vim-expand-region'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'bling/vim-airline'
+Plugin 'Shougo/unite.vim'
+Plugin 'Keithbsmiley/rspec.vim'
+Plugin 'farseer90718/vim-taskwarrior'
 
-Bundle 'SirVer/ultisnips'
-Bundle 'lightningdb/UltiSnips-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'lightningdb/UltiSnips-snippets'
 
 " For debugging colorschemes
-"Bundle 'gerw/vim-HiLinkTrace'
-"Bundle 'vim-scripts/hexHighlight.vim'
+"Plugin 'gerw/vim-HiLinkTrace'
+"Plugin 'vim-scripts/hexHighlight.vim'
+
+call vundle#end()
+
 
 filetype off " set up vundle to allow plugin bundling
 filetype on           " Enable filetype detection
@@ -298,11 +311,13 @@ vnoremap <Leader>aa :Tabularize /\|<CR>
 
 " ### Search vimwiki
 noremap <leader>ss :sb<cr>:call GetSearchInput()<cr>:VimwikiIndex<cr>:exe ":VimwikiSearch \/" . VWSearch . "\/"<cr>:lopen<cr>
-function GetSearchInput()
-  call inputsave()
-  let g:VWSearch = input("Search Vimwiki:")
-  call inputrestore()
-endfunction
+if !exists('*GetSearchInput')
+  function GetSearchInput()
+    call inputsave()
+    let g:VWSearch = input("Search Vimwiki:")
+    call inputrestore()
+  endfunction
+endif
 
 
 " #### From DestroyAllSoftware screencast on file navigation in vim

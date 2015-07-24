@@ -1,15 +1,20 @@
 alias work="clear && echo '## WORK ##' && task +work -someday -waiting ready"
+alias w=work
 alias high="clear && echo '## WORK ##' && task +work -someday -waiting pri:H ready"
 alias errand="clear && echo '## ERRAND ##' && task +errand -someday ready"
+alias e=errand
 alias atwork="clear && echo '## AT WORK ##' && task +atwork -someday ready"
 alias home="clear && echo '## HOME ##' && task +home -someday ready"
+alias h=home
 alias phone="clear && echo '## PHONE ##' && task +phone -someday ready"
+alias p=phone
 alias chili="clear && task list +chili -someday ready"
-alias someday="clear && echo '## SOMEDAY ##' && task +someday ready"
+alias someday="clear && echo '## SOMEDAY ##' && task +someday"
+alias s=someday
 alias computer="clear && echo '## COMPUTER ##' && task +computer -someday ready"
+alias c=computer
 alias projects="clear && echo '## PROJECTS ##' && task projects"
 alias waiting="clear && echo '## WAITING FUTURE ##' && task waiting +waiting; echo '\n## WAITING NOW ##' && task +waiting ready"
-alias dean="task +dean ready"
 alias today="task today"
 alias yesterday="task yesterday"
 td() { task "$*" done }
@@ -19,6 +24,7 @@ tm() {
   otherargs=$*
   task "$tasknum" mod "$otherargs"
 }
+alias t="task"
 alias ta="task add"
 alias taw="task add +work"
 alias tlw="task log +work"
