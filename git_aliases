@@ -113,10 +113,11 @@ alias gd='git diff -M'
 # that would exist between that commit and the existing HEAD.
 alias gdc='git diff --cached -M'
 
-# Preserve merges when rebasing. This prevents merges being flattened when
-# they could be, which means your history will retain its shape when you rebase
-# over it.
-alias grb='git rebase -p'
+# Preserve merges when rebasing. This keeps merge commits intact instead of
+# flattening them, so your history retains its shape when you rebase over it.
+# (Modern git: --rebase-merges replaces the old -p / --preserve-merges, which
+# was removed.)
+alias grb='git rebase --rebase-merges'
 
 # Don't fast-forward when merging, even if it's possible. A merge is a semantic
 # thing, so we want to choose when to merge and when not to.

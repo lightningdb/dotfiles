@@ -1,13 +1,26 @@
-#!/usr/local/bin/zsh
-files=( ackrc gvimrc rdebugrc riplrc taskrc tmux.conf vimrc )
+#!/usr/bin/env zsh
+# Symlink dotfiles into place. Backs up anything already there to *.bak.
+set -e
+DOTFILES="${0:A:h}"          # dir this script lives in
 
-for file in $files
-do
-  rm "~/.${file}"
-  ln -s ~/dotfiles/${file} ~/.${file}
-done
+link() {
+  local src="$DOTFILES/$1" dst="$2"
+  mkdir -p "${dst:h}"
+  if [[ -e "$dst" && ! -L "$dst" ]]; then
+    echo "backup: $dst -> $dst.bak"
+    mv "$dst" "$dst.bak"
+  fi
+  ln -sfn "$src" "$dst"
+  echo "linked: $dst -> $src"
+}
 
-# Left the edgecases alone
-rm ~/.task
-ln -s ~/Dropbox/.task ~/.task
-ln -s ~/Dropbox/vimwiki ~/vimwiki
+# Neovim config (XDG path)
+link nvim/init.lua "$HOME/.config/nvim/init.lua"
+
+# Git aliases — symlinked, then sourced from .zshrc (see note below)
+link git_aliases "$HOME/.git_aliases"
+
+# tmux — uncomment if you keep it (modernise the file first)
+# link tmux.conf "$HOME/.tmux.conf"
+
+echo "done."
