@@ -20,7 +20,6 @@ link nvim/init.lua "$HOME/.config/nvim/init.lua"
 # Git aliases — symlinked, then sourced from .zshrc (see note below)
 link git_aliases "$HOME/.git_aliases"
 
-# tmux — uncomment if you keep it (modernise the file first)
-# link tmux.conf "$HOME/.tmux.conf"
+link tmux.conf "$HOME/.tmux.conf"
 
 echo "done."
